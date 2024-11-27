@@ -1,8 +1,8 @@
 <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
     <div class="flex items-center space-x-8 mr-8">
-        <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 mr-12">
+        <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
         <div class="hidden md:flex space-x-20">
-            <a href="#" class="text-[#003759] font-semibold">Find Jobs</a>
+            <a href="#" class="text-[#003759] font-semibold ml-4">Find Jobs</a>
             <a href="#" class="text-[#003759] font-semibold">Advantage</a>
             <a href="#" class="text-[#003759] font-semibold">Articles</a>
             <a href="#" class="text-[#003759] font-semibold">Testimonial</a>

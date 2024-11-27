@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login - KarirUB</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="h-screen">
   <div class="flex h-full">
@@ -50,7 +51,7 @@
           @enderror
         </div>
         <!-- Login Button -->
-        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full hover:bg-blue-700">
+        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full">
           Login
         </button>
       </form>
@@ -60,8 +61,8 @@
     </div>
     <!-- Bagian kanan -->
     <div class="w-1/2 bg-blue-100 flex flex-col items-center justify-center">
-      <img src="asset/logo_karirub.svg'" alt="KarirUB Logo" class="h-[195px] w-[218px]">
-      <div class="text-[#003759] text-4xl font-[Montserrat] leading-[46.8px]">
+      <img src="asset/logo_karirub.png" alt="KarirUB Logo" class="h-[218px] w-[195px]">
+      <div class="text-[#003759] text-4xl font-[Montserrat] mb-4 font-bold">
         Jobseeker
       </div>
     </div>
