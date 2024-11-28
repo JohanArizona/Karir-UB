@@ -6,24 +6,13 @@
   <title>KarirUB - Register</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            montserrat: ['Montserrat'],
-          },
-        },
-      },
-    };
-  </script>
 </head>
-<body class="h-screen">
+<body class="h-screen bg-white font-[montserrat]">
   <div class="flex h-full">
     <!-- Bagian kiri -->
     <div class="w-1/2 bg-[#FFFAFA] flex flex-col justify-center px-16 pl-32 custom-shadow">
-      <h1 class="font-montserrat text-[48px] font-bold text-[#003759] leading-[57.6px] mb-2">Register</h1>
-      <p class="text-[#003759] font-semibold mb-6 text-[28px]">Welcome to KarirUB</p>
+      <h1 class="font-montserrat text-[40px] font-bold text-[#003759] leading-[57.6px] mb-1">Register</h1>
+      <p class="text-[#003759] font-semibold mb-6 text-[24px]">Welcome to KarirUB</p>
       <form action="#" method="post" class="space-y-5">
         <!-- Full Name Input -->
         <div class="w-[480px] h-[60px] px-6 py-4 bg-white rounded-[10px] border border-[#595959] flex flex-col justify-center items-start gap-1.5">
@@ -85,11 +74,11 @@
           </label>
         </div>
         <!-- Next Button -->
-        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full hover:bg-blue-700">
+        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full">
           Next
         </button>
       </form>
-      <p class="mt-4 pl-24 text-[20px]">
+      <p class="mt-4 ml-20 text-[20px]">
         Already have an account? <a href="#" class="text-[#003759] font-semibold font-montserrat">Login</a>
       </p>
     </div>
