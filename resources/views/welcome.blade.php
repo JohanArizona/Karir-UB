@@ -7,17 +7,18 @@
     <script src="https://cdn.tailwindcss.com"></script>
     @vite(['resources/css/style.css'])
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="min-h-screen">
+<body class="bg-white font-[Montserrat]">
     @include('layouts.navigation')
 
     <!-- Hero Section -->
     <div class="bg-[#E6E6E6] h-[90vh] max-w-full mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div class="ml-8">
-            <h1 class="text-6xl font-bold mb-4">
+            <h1 class="text-5xl font-bold mb-4">
                 Find Your Dream Job <br> With<span class="text-[#005E99]"> KarirUB</span>
             </h1>
-            <p class="text-black mb-8 text-2xl font-semibold">Get a job that fits your profile today</p>
+            <p class="text-black mb-4 mt-10 text-2xl font-semibold">Get a job that fits your profile today</p>
             
             <form action="#" method="GET" class="relative max-w-md">
                 <input
@@ -30,14 +31,6 @@
                     Search
                 </button>
             </form>
-            
-            <p class="mt-4 text-sm font-semibold">
-                Want to be a recruiter? 
-                <a href="#" class="text-[#005E99]">
-                    Become a recruiter 
-                    <i class="fas fa-chevron-right text-xs"></i>
-                </a>
-            </p>
         </div>
         <div class="relative hidden md:block mb-24 ml-auto">
             <img src="asset/foto_dashboard.svg" alt="Professional" class="object-contain">
@@ -48,9 +41,6 @@
     <!-- Features -->
     <div class="py-16">
         <div class="max-w-7xl mx-auto px-4">
-        <h1 class="text-[48px] font-bold text-[#003759] leading-[57.6px] mb-2">
-        Login
-    </h1>
             <h2 class="text-center text-4xl text-[#003759] font-semibold mb-2">Why Choose Us?</h2>
             <p class="text-center text-xl text-gray-600 mb-12 font-semibold">A process that makes the difference</p>
             

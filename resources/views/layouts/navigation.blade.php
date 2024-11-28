@@ -4,7 +4,7 @@
         <div class="flex items-center space-x-8">
             <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
             <div class="hidden md:flex space-x-20">
-                <a href="#" class="text-[#003759] font-semibold ml-4">Find Jobs</a>
+                <a href="#" class="text-[#003759] font-semibold ml-8">Find Jobs</a>
                 <a href="#" class="text-[#003759] font-semibold">Advantage</a>
                 <a href="#" class="text-[#003759] font-semibold">Articles</a>
                 <a href="#" class="text-[#003759] font-semibold">Testimonial</a>

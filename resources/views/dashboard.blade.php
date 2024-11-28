@@ -8,7 +8,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white">
+<body class="bg-white font-[Montserrat]">
     
   @include('layouts.navbar_userlogin')
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -16,16 +16,16 @@
       <div class="flex items-center justify-between mb-12">
           <!-- Teks -->
           <h1 class="text-[40px] font-bold text-gray-800">
-              Hi {{ auth()->user()->nama }}, what kind of <br> job are you looking for?
+              Hi {{ explode(' ', auth()->user()->nama)[0] }}, what kind of <br> job are you looking for?
           </h1>
 
           <!-- Search Bar -->
           <div class="relative max-w-[650px] w-full">
               <!-- Ikon search -->
               <img 
-                  src="asset/logo/search.svg" 
+                  src="asset/logo/search_putih.svg" 
                   alt="search" 
-                  class="absolute h-8 w-8 left-4 top-1/2 transform -translate-y-1/2"
+                  class="absolute h-6 w-6 left-4 top-1/2 transform -translate-y-1/2"
               >
               
               <!-- Input field -->
@@ -49,19 +49,14 @@
     <div id="poster-carousel" class="flex transition-transform duration-700 ease-in-out">
           <!-- Poster pertama -->
           <div class="flex-shrink-0 w-full">
-              <img src="asset/background_dashboard_user.svg" alt="Hiring Logo" class="w-full h-auto object-cover">
+              <img src="asset/background_dashboard_user1.svg" alt="Hiring Logo" class="w-full h-auto object-cover">
           </div>
 
           <!-- Poster kedua -->
           <div class="flex-shrink-0 w-full">
-              <img src="asset/background_dashboard_user.svg" alt="Hiring Logo" class="w-full h-auto object-cover">
+              <img src="asset/background_dashboard_user2.svg" alt="Hiring Logo" class="w-full h-auto object-cover">
           </div>
-
-          <!-- Poster ketiga -->
-          <div class="flex-shrink-0 w-full">
-              <img src="asset/background_dashboard_user.svg" alt="Hiring Logo" class="w-full h-auto object-cover">
-          </div>
-      </div>
+    </div>
 
       <!-- Tombol navigasi -->
       <div class="absolute top-1/2 left-0 transform -translate-y-1/2 p-4 bg-black bg-opacity-50 text-white cursor-pointer rounded-full hover:bg-opacity-80" onclick="prevSlide()">&#10094;</div>

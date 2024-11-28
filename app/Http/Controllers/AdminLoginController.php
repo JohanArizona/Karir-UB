@@ -39,4 +39,18 @@ class AdminLoginController extends Controller
     {
         return view('admin.dashboard');
     }
+
+    public function logout(Request $request)
+    {
+        // Logout admin
+        Auth::guard('admin')->logout();
+
+        // Hapus semua sesi yang terkait
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        // Redirect ke halaman login
+        return redirect()->route('admin.login');
+    }
 }
