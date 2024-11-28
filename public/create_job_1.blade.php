@@ -3,61 +3,138 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KarirUB - Find Your Dream Job</title>
+    <title>KarirUB - Add New Job</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/css/style.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+          theme: {
+            extend: {
+              fontFamily: {
+                montserrat: ['Montserrat', 'sans-serif'],
+              },
+            },
+          },
+        };
+    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white overflow-y-hidden">
+<body class="bg-white font-montserrat">
     <!-- Navigation -->
-    <nav class="bg-white shadow-sm h-24">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-24">
-                <div class="flex">
-                    <div class="flex-shrink-0 flex items-center">
-                        <img class="h-12 w-auto" src="asset/logo_karirub.svg" alt="KarirUB">
-                    </div>
-                    <div class="ml-6 flex space-x-8">
-                        <a href="#" class="text-gray-900 inline-flex items-center px-1 pt-1 text-md font-medium">Home</a>
-                        <a href="#" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-md font-semibold">Jobs</a>
-                        <a href="#" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-md font-semibold">Articles</a>
-                        <a href="#" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-md font-semibold">Add Jobs</a>
-                        <a href="#" class="text-gray-500 hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-md font-semibold">Add Articles</a>
+    <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
+        <div class="flex items-center space-x-8 mr-8">
+            <img src="{{ asset('asset/logo_karirub.svg') }}" alt="KarirUB Logo" class="h-14 ml-4">
+                    <div class="hidden md:flex space-x-16">
+                        <a href="#" class="text-[#003759] text-xl font-semibold ml-12">Home </a>
+                        <a href="#" class="text-[#003759] text-xl font-semibold">Jobs</a>
+                        <a href="#" class="text-[#003759] text-xl font-semibold">Articles</a>
+                        <a href="#" class="text-[#003759] text-xl font-semibold">Add Jobs</a>
+                        <a href="#" class="text-[#003759] text-xl font-semibold">Add Articles</a>
                     </div>
                 </div>
-                <div class="flex items-center">
-                    <button class="bg-red-500 text-white px-4 py-2 rounded-md text-sm font-medium font">Logout</button>
-                </div>
-            </div>
+            <form method="POST" action="{{ route('admin.logout') }}">
+            @csrf
+            <button class="bg-[#EC221F] hover:bg-[#C31E1B] text-white px-6 py-2 rounded-md font-medium">Logout</button>
+            </form>
         </div>
     </nav>
 
     <!-- Background Profile -->
-    <div class="absolute w-full h-full z-[-1] justify-center items-center top-[-160px]">
-        <img src="asset/background_create_job.svg" alt="Background Profile" class="w-full max-w-full h-auto max-w-none">
+    <div class="absolute w-full -z-10 top-[-160px]">
+        <img src="images/assets/background_create_job.svg" alt="Background" class="w-full h-auto">
     </div>
-    <!-- Create Job -->
-    <div class="flex items-center justify-center min-h-screen relative -mt-4">
+
+    <!-- Create Job Section -->
+    <div class="flex items-center justify-center py-40">
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-6xl">
-            <h1 class="text-2xl font-bold mb-6 text-[#003759] text-[36px]">Add New Job</h1>
-            <form class="space-y-4">
-            <div>
-                <label for="company-name" class="block mb-2 mt-12">Company Name</label>
-                <input type="text" id="company-name" name="company-name" class="border border-[#8C8C8C] bg-[#FFFAFA] rounded-lg px-4 py-2 w-full max-w-[480px]" placeholder="Enter company name" required>
-            </div>
-            <div>
-                <label for="regency-city" class="block mb-2">Regency/City</label>
-                <input type="text" id="regency-city" name="regency-city" class="border border-[#8C8C8C] bg-[#FFFAFA] rounded-lg px-4 py-2 w-full max-w-[480px]" placeholder="Enter regency/city" required>
-            </div>
-            <div>
-                <label for="company-address" class="block mb-2">Company Address</label>
-                <textarea id="company-address" name="company-address" class="resize-none border border-[#8C8C8C] bg-[#FFFAFA] rounded-lg px-4 py-2 w-full max-w-[480px]" rows="3" placeholder="Enter complete company address" required></textarea>
-            </div>
-            <div class="flex justify-end">
-            <button type="submit" class="flex justify-end bg-[#003759] text-white font-medium py-2 px-4 rounded-md mt-8">Next step</button>
-            </div>
+            <h1 class="text-[#003759] text-2xl md:text-3xl font-bold mb-6">Add New Job</h1>
+            <form class="grid grid-cols-1 md:grid-cols-2 gap-8" id="job-form">
+                <!-- Left Column -->
+                <div>
+                    <label for="company-name" class="block text-[#262626] font-medium mb-2">Company Name</label>
+                    <input type="text" id="company-name" name="company-name" 
+                           class="block w-full px-4 py-4 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]" 
+                           placeholder="Enter company name" required>
+                    
+                    <label for="regency-city" class="block text-[#262626] font-medium mt-6 mb-2">Regency/City</label>
+                    <input type="text" id="regency-city" name="regency-city" 
+                           class="block w-full px-4 py-4 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]" 
+                           placeholder="Enter regency/city" required>
+
+                    <label for="company-address" class="block text-[#262626] font-medium mt-6 mb-2">Company Address</label>
+                    <textarea id="company-address" name="company-address" 
+                              class="block w-full px-4 py-2 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]" 
+                              rows="5" placeholder="Enter complete company address" required></textarea>
+                </div>
+
+                <!-- Right Column -->
+                <div>
+                    <label class="block text-[#262626] font-medium mb-2">Company Logo</label>
+                    <div id="drop-area" class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-[350px] space-y-4">
+                        <!-- Icon -->
+                        <img src="images/assets/upload_drag.svg" alt="Cloud Icon" class="w-10 h-10">
+                        <!-- Input file -->
+                        <input type="file" id="file-input" accept="image/*, .pdf" class="hidden" />
+                        <!-- Label teks -->
+                        <label for="file-input" class="text-gray-500 text-center cursor-pointer">
+                            Drag your file(s) or <span class="text-[#009DFF] underline">browse</span><br>
+                            Max 10 MB files are allowed
+                        </label>
+                    </div>
+                    <!-- File Preview -->
+                    <div id="file-preview" class="mt-4 text-sm text-gray-700"></div>
+                </div>
+                
+
+                <!-- Submit Button -->
+                <div class="col-span-1 md:col-span-2 flex justify-end">
+                    <button type="submit" 
+                            class="bg-[#005E99] hover:bg-[#005481] text-[#FFFAFA] font-medium py-2 px-6 rounded-md">
+                        Next Step
+                    </button>
+                </div>
             </form>
         </div>
     </div>
+
+    <!-- Script -->
+    <script>
+        // JavaScript for file upload
+        const dropArea = document.getElementById("drop-area");
+        const fileInput = document.getElementById("file-input");
+        const filePreview = document.getElementById("file-preview");
+
+        // Drag and Drop events
+        dropArea.addEventListener("dragover", (e) => {
+            e.preventDefault();
+            dropArea.classList.add("border-blue-500");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("border-blue-500");
+        });
+
+        dropArea.addEventListener("drop", (e) => {
+            e.preventDefault();
+            dropArea.classList.remove("border-blue-500");
+            handleFileUpload(e.dataTransfer.files);
+        });
+
+        // File input change
+        fileInput.addEventListener("change", (e) => {
+            handleFileUpload(e.target.files);
+        });
+
+        // Handle file upload
+        function handleFileUpload(files) {
+            const file = files[0];
+            if (file) {
+                if (file.size > 10 * 1024 * 1024) { // Check file size (10 MB max)
+                    filePreview.innerHTML = "<span class='text-red-500'>File is too large! Please select a file under 10 MB.</span>";
+                } else {
+                    filePreview.innerHTML = `<span class="text-green-500">Uploaded: ${file.name}</span>`;
+                }
+            }
+        }
+    </script>
 </body>
 </html>
