@@ -5,24 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KarirUB - Add New Job</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              fontFamily: {
-                montserrat: ['Montserrat', 'sans-serif'],
-              },
-            },
-          },
-        };
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white font-montserrat">
+<body class="bg-white font-[montserrat]">
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
         <div class="flex items-center space-x-8 mr-8">
-            <img src="{{ asset('asset/logo_karirub.svg') }}" alt="KarirUB Logo" class="h-14 ml-4">
+            <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
                     <div class="hidden md:flex space-x-16">
                         <a href="#" class="text-[#003759] text-xl font-semibold ml-12">Home </a>
                         <a href="#" class="text-[#003759] text-xl font-semibold">Jobs</a>
@@ -39,8 +28,8 @@
     </nav>
 
     <!-- Background Profile -->
-    <div class="absolute w-full -z-10 top-[-160px]">
-        <img src="images/assets/background_create_job.svg" alt="Background" class="w-full h-auto">
+    <div class="absolute w-full max-w-full -z-10 top-[-160px]">
+        <img src="asset/background_create_job.png" alt="Background" class="w-full h-auto">
     </div>
 
     <!-- Create Job Section -->
@@ -62,7 +51,7 @@
 
                     <label for="company-address" class="block text-[#262626] font-medium mt-6 mb-2">Company Address</label>
                     <textarea id="company-address" name="company-address" 
-                              class="block w-full px-4 py-2 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]" 
+                              class="block w-full px-4 py-2 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759] resize-none" 
                               rows="5" placeholder="Enter complete company address" required></textarea>
                 </div>
 
