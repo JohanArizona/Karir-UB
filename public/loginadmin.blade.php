@@ -11,7 +11,7 @@
 <body class="bg-gradient-to-r from-[#003759] to-[#0076bf] flex items-center justify-center h-screen overflow-y-hidden">
     <div class="bg-[#FFFAFA] p-20 rounded-3xl shadow-lg w-full max-w-xl min-h-[650px]">
         <h1 class="text-[42px] font-bold mt-4 text-[#003759]">Admin Login</h1>
-        <h2 class="text-[25px] mb-20 text-[#003759]">Welcome to KarirUB</h2>
+        <h2 class="text-[25px] mb-20 text-[#003759]">Welcome to Kar</h2>
         <form class="space-y-4">
         <div>
             <input type="email" id="email" name="email" class="border rounded-xl px-4 py-2 w-full border-[#595959] min-h-[50px] placeholder:text-xl" placeholder="Email Address" required>
