@@ -31,5 +31,18 @@ Route::middleware(['auth:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminLoginController::class, 'dashboard'])->name('admin.dashboard');
 });
 
+// Admin Upload Jobs
+use App\Http\Controllers\JobController;
 
+Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
+    // Step 1: Menampilkan form
+    Route::get('/jobs/create/step1', [JobController::class, 'createStep1'])->name('admin.jobs.create.step1');
+    // Step 1: Menyimpan data ke session
+    Route::post('/jobs/create/step1', [JobController::class, 'storeStep1']);
+    
+    // Step 2: Menampilkan form lanjutan
+    Route::get('/jobs/create/step2', [JobController::class, 'createStep2'])->name('admin.jobs.create.step2');
+    // Step 2: Menyimpan data ke database
+    Route::post('/jobs/create', [JobController::class, 'storeStep2'])->name('admin.jobs.store');
+});
 

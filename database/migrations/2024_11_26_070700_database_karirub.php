@@ -60,9 +60,11 @@ return new class extends Migration
             $table->string('gaji')->nullable();
             $table->text('alamat_perusahaan')->nullable();
             $table->string('no_telp_perusahaan')->nullable();
+            $table->string('logo_company')->nullable();
             $table->enum('status_loker', ['Aktif', 'Non-Aktif'])->default('Aktif');
             $table->timestamps();
         });
+
 
         // Tabel Bookmark Loker
         Schema::create('bookmark_loker', function (Blueprint $table) {
