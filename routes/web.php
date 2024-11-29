@@ -46,3 +46,10 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     Route::post('/jobs/create', [JobController::class, 'store'])->name('admin.jobs.store');
 });
 
+// Admin Upload Artikel
+use App\Http\Controllers\ArticleController;
+
+Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
+    Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
+    Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+});

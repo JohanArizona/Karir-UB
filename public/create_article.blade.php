@@ -5,20 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Article</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-          theme: {
-            extend: {
-              fontFamily: {
-                montserrat: ['Montserrat', 'sans-serif'],
-              },
-            },
-          },
-        };
-    </script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="font-montserrat">
+<body class="bg-white font-[montserrat]">
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
         <div class="flex items-center space-x-8 mr-8">
