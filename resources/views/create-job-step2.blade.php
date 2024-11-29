@@ -37,35 +37,68 @@
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-5xl">
             <h1 class="text-[#003759] text-2xl md:text-3xl font-bold mb-6">Add New Job</h1>
                 <!-- resources/views/create-job-step2.blade.php -->
-                <form method="POST" action="{{ route('admin.jobs.store') }}" enctype="multipart/form-data">
+                <form action="{{ route('admin.jobs.store') }}" method="POST">
                     @csrf
-                    <label for="job-title">Job Title</label>
-                    <input type="text" id="job-title" name="job-title" required>
+                    <div class="mb-4">
+                        <label for="nama_loker" class="block mb-2">Job Title/Position</label>
+                        <input type="text" id="nama_loker" name="nama_loker" required 
+                            class="w-full px-3 py-2 border rounded-md">
+                    </div>
 
-                    <label for="work-shift">Work Shift</label>
-                    <select id="work-shift" name="work-shift" required>
-                        <option value="Full-time">Full-time</option>
-                        <option value="Part-time">Part-time</option>
-                        <option value="Internship">Internship</option>
-                        <option value="Contract">Contract</option>
-                    </select>
+                    <div class="mb-4">
+                        <label for="workshift" class="block mb-2">Work Shift</label>
+                        <select id="workshift" name="workshift" required 
+                            class="w-full px-3 py-2 border rounded-md">
+                            <option value="Full-time">Full-time</option>
+                            <option value="Part-time">Part-time</option>
+                            <option value="Internship">Internship</option>
+                            <option value="Contract">Contract</option>
+                        </select>
+                    </div>
 
-                    <label for="minimum-education">Minimum Education</label>
-                    <select id="minimum-education" name="minimum-education" required>
-                        <option value="D3">D3</option>
-                        <option value="D4">D4</option>
-                        <option value="S1">S1</option>
-                        <option value="S2">S2</option>
-                        <option value="S3">S3</option>
-                    </select>
+                    <div class="mb-4">
+                        <label for="jenjang_minimum" class="block mb-2">Minimum Education</label>
+                        <select id="jenjang_minimum" name="jenjang_minimum" required 
+                            class="w-full px-3 py-2 border rounded-md">
+                            <option value="D3">D3</option>
+                            <option value="D4">D4</option>
+                            <option value="S1">S1</option>
+                            <option value="S2">S2</option>
+                            <option value="S3">S3</option>
+                        </select>
+                    </div>
 
-                    <label for="company-logo">Company Logo</label>
-                    <input type="file" id="company-logo" name="company-logo" accept="image/*" required>
+                    <div class="mb-4">
+                        <label for="tipe" class="block mb-2">Type of Job</label>
+                        <select id="tipe" name="tipe" required 
+                            class="w-full px-3 py-2 border rounded-md">
+                            <option value="Onsite">Onsite</option>
+                            <option value="Hybrid">Hybrid</option>
+                            <option value="Remote">Remote</option>
+                        </select>
+                    </div>
 
-                    <label for="description">Job Description</label>
-                    <textarea id="description" name="description" required></textarea>
+                    <div class="mb-4">
+                        <label for="gaji" class="block mb-2">Salary</label>
+                        <input type="text" id="gaji" name="gaji" required 
+                            class="w-full px-3 py-2 border rounded-md">
+                    </div>
 
-                    <button type="submit">Post Job</button>
+                    <div class="mb-4">
+                        <label for="maksimal_usia" class="block mb-2">Minimum Age</label>
+                        <input type="number" id="maksimal_usia" name="maksimal_usia" required 
+                            class="w-full px-3 py-2 border rounded-md">
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="deskripsi" class="block mb-2">Job Description</label>
+                        <textarea id="deskripsi" name="deskripsi" required 
+                            class="w-full px-3 py-2 border rounded-md h-32"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-[#003759] text-white py-2 rounded-md hover:bg-blue-700">
+                        Post Job
+                    </button>
                 </form>
         </div>
     </div>

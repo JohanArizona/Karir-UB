@@ -37,18 +37,35 @@
         <div class="bg-white p-8 rounded-lg shadow-lg w-full max-w-6xl">
             <h1 class="text-[#003759] text-2xl md:text-3xl font-bold mb-6">Add New Job</h1>
             <!-- resources/views/create-job-step1.blade.php -->
-            <form method="POST" action="{{ route('admin.jobs.create.step1') }}">
-                @csrf
-                <label for="company-name">Company Name</label>
-                <input type="text" id="company-name" name="company-name" required>
+            <form action="{{ route('admin.jobs.create.step1') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+                <div class="mb-4">
+                    <label for="nama_perusahaan" class="block mb-2">Company Name</label>
+                    <input type="text" id="nama_perusahaan" name="nama_perusahaan" required 
+                        class="w-full px-3 py-2 border rounded-md">
+                </div>
 
-                <label for="regency-city">Regency/City</label>
-                <input type="text" id="regency-city" name="regency-city" required>
+                <div class="mb-4">
+                    <label for="kota" class="block mb-2">Regency/City</label>
+                    <input type="text" id="kota" name="kota" required 
+                        class="w-full px-3 py-2 border rounded-md">
+                </div>
 
-                <label for="company-address">Company Address</label>
-                <textarea id="company-address" name="company-address" required></textarea>
+                <div class="mb-4">
+                    <label for="alamat_perusahaan" class="block mb-2">Company Address</label>
+                    <textarea id="alamat_perusahaan" name="alamat_perusahaan" required 
+                        class="w-full px-3 py-2 border rounded-md"></textarea>
+                </div>
 
-                <button type="submit">Next Step</button>
+                <div class="mb-4">
+                    <label for="logo" class="block mb-2">Company Logo</label>
+                    <input type="file" id="logo" name="logo" accept="image/*" required 
+                        class="w-full px-3 py-2 border rounded-md">
+                </div>
+
+                <button type="submit" class="w-full bg-[#003759] text-white py-2 rounded-md hover:bg-blue-700">
+                    Next Step
+                </button>
             </form>
         </div>
     </div>

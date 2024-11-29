@@ -1,7 +1,5 @@
 <?php
 
-// app/Http/Controllers/JobController.php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -10,108 +8,89 @@ use Session;
 
 class JobController extends Controller
 {
-    // Menampilkan form input data
+    // Menampilkan form input data step 1
     public function createStep1()
     {
         return view('create-job-step1');
     }
 
-    // Menyimpan data sementara di session admin
+    // Menyimpan data sementara di session untuk step 1
     public function storeStep1(Request $request)
     {
-        // Validasi data
+        // Validasi data step 1
         $validated = $request->validate([
-            'company-name' => 'required|string|max:255',
-            'regency-city' => 'required|string|max:255',
-            'company-address' => 'required|string',
+            'nama_perusahaan' => 'required|string|max:255',
+            'kota' => 'required|string|max:255',
+            'alamat_perusahaan' => 'required|string',
+            'logo' => 'required|image|mimes:jpg,jpeg,png,gif|max:10240'
         ]);
-
-        // Simpan data di session admin
-        Session::put('job_data', $validated);
-
+    
+        // Simpan logo
+        if ($request->hasFile('logo')) {
+            $logoPath = $request->file('logo')->store('logo_company', 'public');
+            
+            // Simpan path logo ke session, bukan file itu sendiri
+            Session::put('job_data_step1', [
+                'nama_perusahaan' => $validated['nama_perusahaan'],
+                'kota' => $validated['kota'],
+                'alamat_perusahaan' => $validated['alamat_perusahaan'],
+                'logo_path' => $logoPath
+            ]);
+        }
+    
         return redirect()->route('admin.jobs.create.step2');
     }
 
-    // Menampilkan halaman step 2 (lanjutan form)
+    // Menampilkan halaman step 2
     public function createStep2()
     {
         return view('create-job-step2');
     }
 
-    // Menyimpan data dari step 2 dan menyimpannya ke database
-    public function storeStep2(Request $request)
-    {
-        // Ambil data dari session
-        $jobData = Session::get('job_data');
-    
-        // Gabungkan data dari step 1 dan step 2
-        $data = array_merge($jobData, $request->only([
-            'job-title', 'work-shift', 'minimum-education', 'company-logo', 'description'
-        ]));
-    
-        // Simpan data ke database
-        $loker = new Loker();
-        $loker->nama_perusahaan = $data['company-name'];
-        $loker->nama_loker = $data['job-title'];
-        $loker->workshift = $data['work-shift'];
-        $loker->kategori = $data['minimum-education'];
-        $loker->deskripsi = $data['description'];
-        $loker->kota = $data['regency-city'];
-        $loker->alamat_perusahaan = $data['company-address'];
-    
-        // Simpan logo jika ada
-        if ($request->hasFile('company-logo')) {
-            $file = $request->file('company-logo');
-            $path = $file->storeAs('logo_company', $file->getClientOriginalName(), 'public');
-            $logoPath = 'logo_company/' . $file->getClientOriginalName();
-            $loker->logo_company = $logoPath; // Simpan path logo ke database
-        }
-    
-        $loker->save();
-    
-        // Hapus session setelah data disimpan
-        Session::forget('job_data');
-    
-        return redirect()->route('admin.jobs.index')->with('success', 'Job has been posted successfully');
-    }
-    
+    // Menyimpan data akhir dan simpan ke database
     public function store(Request $request)
     {
-        // Validasi data
+        // Ambil data dari session step 1
+        $step1Data = Session::get('job_data_step1');
+
+        // Validasi data step 2
         $validated = $request->validate([
-            'nama_perusahaan' => 'required|string|max:255',
             'nama_loker' => 'required|string|max:255',
-            'workshift' => 'required|string|in:Full-time,Part-time,Internship,Contract',
-            'kategori' => 'nullable|string|max:255',
-            'deskripsi' => 'nullable|string',
-            'kota' => 'nullable|string|max:255',
-            'alamat_perusahaan' => 'nullable|string',
-            'logo' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:10240',  // Validasi untuk logo
+            'workshift' => 'required|in:Full-time,Part-time,Internship,Contract',
+            'jenjang_minimum' => 'required|in:D3,D4,S1,S2,S3',
+            'tipe' => 'required|in:Onsite,Hybrid,Remote',
+            'gaji' => 'required|string',
+            'maksimal_usia' => 'required|integer',
+            'deskripsi' => 'required|string'
         ]);
-    
-        // Menyimpan file logo jika ada
-        if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('logo_company', 'public');
-        } else {
-            $logoPath = null;  // Jika tidak ada file logo, set null
-        }
-    
-        // Menyimpan data ke tabel 'loker'
-        Loker::create([
-            'nama_perusahaan' => $request->nama_perusahaan,
-            'nama_loker' => $request->nama_loker,
-            'workshift' => $request->workshift,
-            'kategori' => $request->kategori,
-            'deskripsi' => $request->deskripsi,
-            'kota' => $request->kota,
-            'alamat_perusahaan' => $request->alamat_perusahaan,
-            'logo_company' => $logoPath,  // Menyimpan path logo jika ada
-            'status_loker' => $request->status_loker,
-        ]);
-    
-        return redirect()->route('loker.index');  // Mengarahkan ke halaman index loker
-    }    
+
+        // Gabungkan data dari kedua step
+        $finalData = array_merge($step1Data, $validated);
+
+        // Simpan data ke database
+        $loker = new Loker();
+        $loker->nama_perusahaan = $finalData['nama_perusahaan'];
+        $loker->kota = $finalData['kota'];
+        $loker->alamat_perusahaan = $finalData['alamat_perusahaan'];
+        $loker->logo_company = $finalData['logo_path'];
+        
+        $loker->nama_loker = $finalData['nama_loker'];
+        $loker->workshift = $finalData['workshift'];
+        $loker->jenjang_minimum = $finalData['jenjang_minimum'];
+        $loker->tipe = $finalData['tipe'];
+        $loker->gaji = $finalData['gaji'];
+        $loker->maksimal_usia = $finalData['maksimal_usia'];
+        $loker->deskripsi = $finalData['deskripsi'];
+        
+        // Tambahkan status default atau sesuaikan
+        $loker->status_loker = 'aktif';
+
+        $loker->save();
+
+        // Hapus session
+        Session::forget('job_data_step1');
+
+        // Tambahkan sweet alert untuk notifikasi berhasil
+        return redirect()->route('loker.index')->with('success', 'Lowongan kerja berhasil ditambahkan!');
+    }
 }
-
-
-

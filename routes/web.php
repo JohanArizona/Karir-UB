@@ -43,6 +43,6 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     // Step 2: Menampilkan form lanjutan
     Route::get('/jobs/create/step2', [JobController::class, 'createStep2'])->name('admin.jobs.create.step2');
     // Step 2: Menyimpan data ke database
-    Route::post('/jobs/create', [JobController::class, 'storeStep2'])->name('admin.jobs.store');
+    Route::post('/jobs/create', [JobController::class, 'store'])->name('admin.jobs.store');
 });
 

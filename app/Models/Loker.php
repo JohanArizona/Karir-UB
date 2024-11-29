@@ -1,7 +1,4 @@
 <?php
-
-// app/Models/Loker.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -14,10 +11,8 @@ class Loker extends Model
     protected $table = 'loker';
 
     protected $fillable = [
-        'nama_perusahaan', 'nama_loker', 'workshift', 'kategori', 
-        'jenjang_minimum', 'maksimal_usia', 'deskripsi', 'kota', 
-        'gaji', 'alamat_perusahaan', 'no_telp_perusahaan', 'status_loker', 'logo_company'
+        'nama_perusahaan', 'nama_loker', 'workshift', 'jenjang_minimum', 
+        'tipe', 'gaji', 'maksimal_usia', 'deskripsi', 'kota', 
+        'alamat_perusahaan', 'logo_company', 'status_loker'
     ];
 }
-
-
