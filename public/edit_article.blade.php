@@ -7,7 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body class="bg-white font-[montserrat]">
+<body class="font-montserrat">
     <!-- Navigation -->
     <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
         <div class="flex items-center space-x-8 mr-8">
@@ -31,7 +31,7 @@
     <!-- Form Section -->
     <div class="flex items-center justify-center py-40 px-6">
         <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-3xl">
-            <h1 class="text-2xl font-bold text-[#003759] mb-6">Add New Article</h1>
+            <h1 class="text-2xl font-bold text-[#003759] mb-6">Edit Article</h1>
             <form class="space-y-6">
                 <!-- Title -->
                 <div>
@@ -61,7 +61,7 @@
                 <div class="flex justify-end">
                     <button type="submit" 
                             class="bg-[#005E99] hover:bg-[#005481] text-white font-medium py-2 px-6 rounded-md w-[100px] h-[40px]">
-                        Post
+                        Update
                     </button>
                 </div>
             </form>
