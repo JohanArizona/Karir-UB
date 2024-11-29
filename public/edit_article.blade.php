@@ -31,7 +31,7 @@
     <!-- Form Section -->
     <div class="flex items-center justify-center py-40 px-6">
         <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-3xl">
-            <h1 class="text-2xl font-bold text-[#003759] mb-6">Add New Article</h1>
+            <h1 class="text-2xl font-bold text-[#003759] mb-6">Edit Article</h1>
             <form class="space-y-6">
                 <!-- Title -->
                 <div>
@@ -61,7 +61,7 @@
                 <div class="flex justify-end">
                     <button type="submit" 
                             class="bg-[#005E99] hover:bg-[#005481] text-white font-medium py-2 px-6 rounded-md w-[100px] h-[40px]">
-                        Post
+                        Update
                     </button>
                 </div>
             </form>
