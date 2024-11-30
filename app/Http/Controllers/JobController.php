@@ -22,8 +22,11 @@ class JobController extends Controller
             'nama_perusahaan' => 'required|string|max:255',
             'kota' => 'required|string|max:255',
             'alamat_perusahaan' => 'required|string',
-            'logo' => 'required|image|mimes:jpg,jpeg,png,gif|max:10240'
+            'logo' => 'required|image|mimes:jpg,jpeg,png,gif|max:10240',
+            'kode_negara' => 'required|string|max:5',
+            'no_telp_perusahaan' => 'required|string|max:20',
         ]);
+        
     
         // Simpan logo
         if ($request->hasFile('logo')) {
@@ -34,7 +37,9 @@ class JobController extends Controller
                 'nama_perusahaan' => $validated['nama_perusahaan'],
                 'kota' => $validated['kota'],
                 'alamat_perusahaan' => $validated['alamat_perusahaan'],
-                'logo_path' => $logoPath
+                'logo_path' => $logoPath,
+                'kode_negara' => $validated['kode_negara'],
+                'no_telp_perusahaan' => $validated['no_telp_perusahaan'],
             ]);
         }
     
@@ -81,6 +86,7 @@ class JobController extends Controller
         $loker->gaji = $finalData['gaji'];
         $loker->maksimal_usia = $finalData['maksimal_usia'];
         $loker->deskripsi = $finalData['deskripsi'];
+        $loker->no_telp_perusahaan = $finalData['kode_negara'] . $finalData['no_telp_perusahaan'];
         
         // Tambahkan status default atau sesuaikan
         $loker->status_loker = 'aktif';

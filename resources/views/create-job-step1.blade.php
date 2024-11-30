@@ -58,6 +58,21 @@
                 </div>
 
                 <div class="mb-4">
+                    <label for="no_telp_perusahaan" class="block mb-2">Phone Number</label>
+                    <div class="flex">
+                        <select id="kode_negara" name="kode_negara" required 
+                            class="w-1/4 px-3 py-2 border rounded-md mr-2">
+                            <option value="+62">+62 (Indonesia)</option>
+                            <option value="+1">+1 (USA)</option>
+                            <option value="+44">+44 (UK)</option>
+                            <!-- Tambahkan kode negara lainnya jika perlu -->
+                        </select>
+                        <input type="text" id="no_telp_perusahaan" name="no_telp_perusahaan" required 
+                            placeholder="Phone number" class="w-3/4 px-3 py-2 border rounded-md">
+                    </div>
+                </div>
+
+                <div class="mb-4">
                     <label for="logo" class="block mb-2">Company Logo</label>
                     <input type="file" id="logo" name="logo" accept="image/*" required 
                         class="w-full px-3 py-2 border rounded-md">

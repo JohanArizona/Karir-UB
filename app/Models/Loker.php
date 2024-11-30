@@ -13,6 +13,6 @@ class Loker extends Model
     protected $fillable = [
         'nama_perusahaan', 'nama_loker', 'workshift', 'jenjang_minimum', 
         'tipe', 'gaji', 'maksimal_usia', 'deskripsi', 'kota', 
-        'alamat_perusahaan', 'logo_company', 'status_loker'
-    ];
+        'alamat_perusahaan', 'logo_company', 'status_loker', 'no_telp_perusahaan'
+    ];    
 }
