@@ -57,7 +57,45 @@
 
                 <!-- Right Column -->
                 <div>
-                    <label class="block text-[#262626] font-medium mb-2">Company Logo</label>
+                    <label for="company-phone" class="block text-[#262626] font-medium mb-2">Company Phone Number</label>
+                    <div class="flex items-center border border-gray-300 rounded-md bg-[#FFFAFA] focus-within:ring-[#003759] focus-within:border-[#003759]">
+                        <!-- Country Code Dropdown -->
+                        <select id="country-code" name="country-code" 
+                                class="px-4 py-3 bg-transparent border-none outline-none text-[#262626] appearance-none">
+                                <option value="+1">USA (+1)</option>
+                                <option value="+44">GBR (+44)</option>
+                                <option value="+62" selected>IDN (+62)</option>
+                                <option value="+91">IND (+91)</option>
+                                <option value="+33">FRA (+33)</option>
+                                <option value="+49">DEU (+49)</option>
+                                <option value="+81">JPN (+81)</option>
+                                <option value="+86">CHN (+86)</option>
+                                <option value="+55">BRA (+55)</option>
+                                <option value="+61">AUS (+61)</option>
+                                <option value="+93">AFG (+93)</option>
+                                <option value="+355">ALB (+355)</option>
+                                <option value="+213">DZA (+213)</option>
+                                <option value="+376">AND (+376)</option>
+                                <option value="+244">AGO (+244)</option>
+                                <option value="+54">ARG (+54)</option>
+                                <option value="+374">ARM (+374)</option>
+                                <option value="+297">ABW (+297)</option>
+                                <option value="+43">AUT (+43)</option>
+                                <option value="+994">AZE (+994)</option>
+                               
+                        </select>
+                
+                        <!-- Vertical Divider -->
+                        <div class="w-[1px] h-[50px] bg-gray-300"></div>
+                
+                        <!-- Phone Number Input -->
+                        <input type="text" id="company-phone" name="company-phone"
+                               class="flex-1 px-4 py-3 border-none bg-transparent focus:outline-none"
+                               placeholder="Enter phone number" required
+                               inputmode="numeric" pattern="[0-9]*" required>
+                    </div>
+                
+                    <label class="block text-[#262626] font-medium mt-6 mb-2">Company Logo</label>
                     <div id="drop-area" class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-[350px] space-y-4">
                         <!-- Icon -->
                         <img src="images/assets/upload_drag.svg" alt="Cloud Icon" class="w-10 h-10">

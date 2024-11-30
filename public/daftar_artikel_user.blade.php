@@ -191,7 +191,6 @@
 </div>
 </div>
 
-
     <!-- Pagination -->
     <div class="flex justify-center mt-10 mb-8">
         <nav class="flex items-center space-x-2">
