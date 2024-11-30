@@ -52,4 +52,17 @@ use App\Http\Controllers\ArticleController;
 Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
     Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');
+    
+    // Dashboard untuk menampilkan daftar artikel
+    Route::get('/dashboard', [ArticleController::class, 'index'])->name('admin.dashboard');
+
+    // Route untuk halaman edit artikel
+    Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+
+    // Route untuk halaman update artikel
+    Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
+
+    // Route untuk delete artikel
+    Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
 });

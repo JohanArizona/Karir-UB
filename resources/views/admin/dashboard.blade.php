@@ -20,19 +20,24 @@
 
         <!-- Action Cards -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            <div class="h-[300px] bg-[#005e99] rounded-lg p-8 text-center cursor-pointer hover:bg-[#004A78] transition pt-20">
-                <div class="text-[#fffafa] mb-6">
-                    <i class="fas fa-briefcase text-5xl"></i>
+            <a href="{{ route('admin.jobs.create.step1') }}" class="block">
+                <div class="h-[300px] bg-[#005e99] rounded-lg p-8 text-center hover:bg-[#004A78] transition pt-20">
+                    <div class="text-[#fffafa] mb-6">
+                        <i class="fas fa-briefcase text-5xl"></i>
+                    </div>
+                    <span class="text-3xl font-semibold text-[#fffafa]">Create New Job</span>
                 </div>
-                <h3 class="text-3xl font-semibold text-[#fffafa]">Create New Job</h3>
-            </div>
-            <div class="bg-[#005e99] rounded-lg p-8 text-center cursor-pointer hover:bg-[#004A78] transition pt-20">
-                <div class="text-[#fffafa] mb-6">
-                    <i class="fas fa-file-alt text-5xl"></i>
+            </a>
+            <a href="{{ route('articles.create') }}" class="block">
+                <div class="h-[300px] bg-[#005e99] rounded-lg p-8 text-center hover:bg-[#004A78] transition pt-20">
+                    <div class="text-[#fffafa] mb-6">
+                        <i class="fas fa-file-alt text-5xl"></i>
+                    </div>
+                    <span class="text-3xl font-semibold text-[#fffafa]">Create New Article</span>
                 </div>
-                <h3 class="text-3xl font-semibold text-[#fffafa]">Create New Article</h3>
-            </div>
+            </a>
         </div>
+
 
         <!-- Container for Cards -->
         <div class="flex justify-between items-center mb-4">
@@ -222,26 +227,34 @@
             </div>
             <div class="space-y-4">
                 <!-- Article Card -->
-                <div class="bg-white rounded-lg shadow">
-                    <div class="flex">
-                        <img src="images/assets/thumbnail1_admin.svg" alt="Article thumbnail" class="w-[325px] h-[190px] rounded-[5px] object-cover">
-                        <div class="p-4 flex-1">
-                            <div class="flex items-center justify-between">
-                                <div class="pt-10 text-sm text-gray-500 font-semibold font-['Montserrat']">Sabtu, 16 November 2024 21:25 WIB</div>
-                                <div class=" flex space-x-2">
-                                    <button class=" bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
-                                        Edit
-                                    </button>
-                                    <button class=" bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-6 py-2 mt-2 mr-4  rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
-                                        Delete
-                                    </button>
+                @foreach($articles as $article)
+                    <!-- Article Card -->
+                    <div class="bg-white rounded-lg shadow">
+                        <div class="flex">
+                            <img src="images/assets/thumbnail1_admin.svg" alt="Article thumbnail" class="w-[325px] h-[190px] rounded-[5px] object-cover">
+                            <div class="p-4 flex-1">
+                                <div class="flex items-center justify-between">
+                                    <div class="pt-10 text-sm text-gray-500 font-semibold font-['Montserrat']">
+                                        {{ \Carbon\Carbon::parse($article->tgl_post)->format('l, d F Y H:i WIB') }}
+                                    </div>
+                                    <div class="flex space-x-2">
+                                        <a href="{{ route('articles.edit', $article->id_artikel) }}" class="bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                                            Edit
+                                        </a>
+                                        <form action="{{ route('articles.destroy', $article->id_artikel) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus artikel ini?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
                                 </div>
+                                <h4 class="text-[28px] font-semibold font-['Montserrat'] mb-2">{{ $article->judul }}</h4>
                             </div>
-                            <h4 class="text-[28px] font-semibold font-['Montserrat'] mb-2">KarirUB Connects 1,000+ UB Alumni with Trusted Companies</h4>
                         </div>
                     </div>
-                </div>
-                <!-- More article cards would go here -->
+                @endforeach
             </div>
         </div>
     </main>
