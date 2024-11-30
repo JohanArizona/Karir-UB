@@ -57,12 +57,12 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     Route::get('/dashboard', [ArticleController::class, 'index'])->name('admin.dashboard');
 
     // Route untuk halaman edit artikel
-    Route::get('/articles/{id}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
-
+    Route::get('/articles/{id_artikel}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
+    
     // Route untuk halaman update artikel
-    Route::put('/articles/{id}', [ArticleController::class, 'update'])->name('articles.update');
+    Route::put('/articles/{id_artikel}', [ArticleController::class, 'update'])->name('articles.update');
 
-    // Route untuk delete artikel
-    Route::delete('/articles/{id}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+    // Route untuk Delete
+    Route::delete('/articles/{id_artikel}', [ArticleController::class, 'destroy'])->name('articles.destroy');
 
 });

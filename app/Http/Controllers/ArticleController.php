@@ -56,63 +56,69 @@ class ArticleController extends Controller
     }
 
     //Edit Artikel
-    public function edit($id)
+    public function edit($id_artikel)
     {
-        // Ambil artikel berdasarkan ID
-        $artikel = ArtikelBerita::findOrFail($id);
+        // Ambil artikel berdasarkan id_artikel
+        $artikel = ArtikelBerita::findOrFail($id_artikel);
     
-        // Kirim data artikel ke view edit
-        return view('admin.edit_article', compact('artikel'));
-    }    
-
+        // Kirim artikel ke view
+        return view('admin.articles.edit', compact('artikel'));
+    }
+    
     //Update Artikel
-    public function update(Request $request, $id)
+    public function update(Request $request, $id_artikel)
     {
         // Validasi input
         $validated = $request->validate([
             'judul' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'isi_artikel' => 'required|string',
-            'gambar' => 'nullable|image|max:10240', // Maks 10 MB
+            'isi_artikel' => 'required|string', 
+            'cover_image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
         ]);
     
-        // Ambil artikel berdasarkan ID
-        $artikel = ArtikelBerita::findOrFail($id);
+        // Cari artikel berdasarkan id_artikel
+        $artikel = ArtikelBerita::findOrFail($id_artikel);
     
-        // Update data
-        $artikel->judul = $validated['judul'];
-        $artikel->deskripsi = $validated['deskripsi'];
-        $artikel->isi_artikel = $validated['isi_artikel'];
+        // Jika ada gambar yang diupload
+        if ($request->hasFile('cover_image')) {
+            // Hapus gambar lama jika ada
+            if ($artikel->gambar && file_exists(storage_path('app/public/'.$artikel->gambar))) {
+                unlink(storage_path('app/public/'.$artikel->gambar));
+            }
     
-        // Jika ada gambar baru, upload dan update
-        if ($request->hasFile('gambar')) {
-            $path = $request->file('gambar')->store('images', 'public');
-            $artikel->gambar = $path;
+            // Simpan gambar baru
+            $gambarPath = $request->file('cover_image')->store('images', 'public');
+            $artikel->gambar = $gambarPath;
         }
     
-        $artikel->save();
+        // Update artikel (termasuk isi_artikel)
+        $artikel->update([
+            'judul' => $validated['judul'],
+            'deskripsi' => $validated['deskripsi'],
+            'isi_artikel' => $validated['isi_artikel'], // Menambahkan update untuk isi artikel
+        ]);
     
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.dashboard')->with('success', 'Artikel berhasil diperbarui!');
+        // Redirect ke halaman yang diinginkan
+        return redirect()->route('articles.edit', $id_artikel)->with('success', 'Article has been successfully updated');
     }
+    
+    
 
     //Hapus Artikel
-    public function destroy($id)
+    public function destroy($id_artikel)
     {
-        // Cari artikel berdasarkan ID
-        $artikel = ArtikelBerita::findOrFail($id);
+        // Cari artikel berdasarkan id_artikel
+        $article = ArtikelBerita::find($id_artikel);
     
-        // Hapus file gambar jika ada
-        if ($artikel->gambar && \Storage::exists('public/' . $artikel->gambar)) {
-            \Storage::delete('public/' . $artikel->gambar);
+        if ($article) {
+            // Hapus artikel
+            $article->delete();
+            return redirect()->route('admin.dashboard')->with('success', 'Artikel berhasil dihapus');
         }
     
-        // Hapus artikel dari database
-        $artikel->delete();
-    
-        // Redirect dengan pesan sukses
-        return redirect()->route('admin.dashboard')->with('success', 'Artikel berhasil dihapus!');
+        return redirect()->route('admin.dashboard')->with('error', 'Artikel tidak ditemukan');
     }
+    
     
     
 }

@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/style.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
 </head>
 <body class="bg-white font-['Montserrat']">
     @include('layouts.navbar_admin')
@@ -231,23 +233,25 @@
                     <!-- Article Card -->
                     <div class="bg-white rounded-lg shadow">
                         <div class="flex">
-                            <img src="images/assets/thumbnail1_admin.svg" alt="Article thumbnail" class="w-[325px] h-[190px] rounded-[5px] object-cover">
+                            <img src="{{ asset('storage/' . $article->gambar) }}" alt="Article thumbnail" class="w-[325px] h-[190px] rounded-[5px] object-cover">
                             <div class="p-4 flex-1">
                                 <div class="flex items-center justify-between">
                                     <div class="pt-10 text-sm text-gray-500 font-semibold font-['Montserrat']">
-                                        {{ \Carbon\Carbon::parse($article->tgl_post)->format('l, d F Y H:i WIB') }}
+                                        {{ \Carbon\Carbon::parse($article->tgl_post)->format('l, d M Y H:i'). ' WIB' }}
                                     </div>
                                     <div class="flex space-x-2">
                                         <a href="{{ route('articles.edit', $article->id_artikel) }}" class="bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
                                             Edit
                                         </a>
-                                        <form action="{{ route('articles.destroy', $article->id_artikel) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus artikel ini?')">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
-                                                Delete
-                                            </button>
-                                        </form>
+                                    <form id="delete-form-{{ $article->id_artikel }}" action="{{ route('articles.destroy', $article->id_artikel) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="button" 
+                                                class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']"
+                                                onclick="confirmDelete({{ $article->id_artikel }})">
+                                            Delete
+                                        </button>
+                                    </form>
                                     </div>
                                 </div>
                                 <h4 class="text-[28px] font-semibold font-['Montserrat'] mb-2">{{ $article->judul }}</h4>
@@ -260,5 +264,32 @@
     </main>
     <!-- Footer -->
     @include('layouts.footer_admin')
+
+    <script>
+    function confirmDelete(articleId) {
+        Swal.fire({
+            title: 'Are You Sure?',
+            text: "This article will be permanently deleted!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Yes',
+            cancelButtonText: 'Cancel',
+            customClass: {
+                popup: 'swal2-popup',
+                title: 'swal2-title',
+                content: 'swal2-content',
+                confirmButton: 'swal2-confirm',
+                cancelButton: 'swal2-cancel'
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Submit form jika pengguna mengonfirmasi
+                document.getElementById('delete-form-' + articleId).submit();
+            }
+        });
+    }
+    </script>
 </body>
 </html>

@@ -10,6 +10,7 @@ class ArtikelBerita extends Model
     use HasFactory;
 
     protected $table = 'artikel_berita';
+    protected $primaryKey = 'id_artikel';
 
     protected $fillable = [
         'judul', 
