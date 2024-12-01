@@ -29,8 +29,7 @@
 
     <!-- Background Profile -->
     <div class="absolute w-full -z-10 top-[-160px]">
-    <img src="{{ asset('asset/background_create_job.png') }}" alt="Background" class="w-full h-auto">
-
+        <img src="{{ asset('asset/background_create_job.png') }}" alt="Background" class="w-full h-auto">
     </div>
 
     <!-- Create Job Section -->
@@ -43,7 +42,8 @@
                 <div>
                     <label for="nama_loker" class="block text-[#262626] font-medium mb-2">Job Title/Position</label>
                     <input type="text" id="nama_loker" name="nama_loker" required 
-                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]">
+                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]"
+                        placeholder="Enter job title or position">
                     
                     <label for="workshift" class="block text-[#262626] font-medium mt-4 mb-2">Work Shift</label>
                     <select id="workshift" name="workshift" required 
@@ -68,8 +68,8 @@
 
                     <label for="deskripsi" class="block text-[#262626] font-medium mt-4 mb-2">Job Description</label>
                     <textarea id="deskripsi" name="deskripsi" required 
-                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759] resize-none" 
-                        rows="5"></textarea>
+                        class="block w-[960px] px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759] resize-none" 
+                        rows="5" placeholder="Enter job description"></textarea>
                 </div>
 
                 <!-- Right Column -->
@@ -85,15 +85,17 @@
 
                     <label for="gaji" class="block text-[#262626] font-medium mt-4 mb-2">Salary</label>
                     <input type="text" id="gaji" name="gaji" required 
-                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]">
+                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]"
+                        placeholder="Enter salary">
 
                     <label for="maksimal_usia" class="block text-[#262626] font-medium mt-4 mb-2">Minimum Age</label>
                     <input type="number" id="maksimal_usia" name="maksimal_usia" required 
-                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]">
+                        class="block w-full px-4 py-3 border border-gray-300 rounded-md bg-[#FFFAFA] focus:ring-[#003759] focus:border-[#003759]"
+                        placeholder="Enter minimum age">
                 </div>
 
                 <div class="col-span-2">
-                    <button type="submit" class="ml-[780px] w-[160px] h-[55px] bg-[#055282] text-[#FFFAFA] py-2 rounded-md hover:bg-[#033F65]">
+                    <button type="submit" class="ml-[820px] w-[120px] h-[50px] bg-[#055282] text-[#FFFAFA] py-2 rounded-md hover:bg-[#033F65]">
                         Post Job
                     </button>
                 </div>

@@ -6,7 +6,6 @@
     <title>KarirUB - Add New Job</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    @vite(['resources/js/create-job.js'])
 </head>
 <body class="bg-white font-[montserrat]">
     <!-- Navigation -->
@@ -38,6 +37,7 @@
             <h1 class="text-[#003759] text-2xl md:text-3xl font-bold mb-6">Add New Job</h1>
             <form class="grid grid-cols-1 md:grid-cols-2 gap-8" action="{{ route('admin.jobs.create.step1') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+
                 <!-- Left Column -->
                 <div>
                     <label for="nama_perusahaan" class="block text-[#262626] font-medium mb-2">Company Name</label>
@@ -72,12 +72,16 @@
                     </div>
 
                     <label for="logo" class="block text-[#262626] font-medium mt-6 mb-2">Company Logo</label>
-                    <div id="drop-area" class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-[350px] space-y-4">
-                        <input type="file" id="logo" name="logo" accept="image/*" required class="hidden">
-                        <label for="logo" class="text-gray-500 text-center cursor-pointer">
+                    <div id="drop-area" 
+                         class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-[350px]">
+                        <input type="file" id="logo" name="logo" accept="image/*" required class="hidden" onchange="handleFileSelect(event)">
+                        <label id="placeholder-text" for="logo" class="text-gray-500 text-center cursor-pointer">
                             Drag your file(s) or <span class="text-[#009DFF] underline">browse</span><br>
                             Max 10 MB files are allowed
                         </label>
+                        <div id="preview-container" class="flex flex-col items-center mt-4">
+                            <!-- Preview image will be inserted here -->
+                        </div>
                     </div>
                 </div>
 
@@ -91,5 +95,67 @@
             </form>
         </div>
     </div>
+
+    <script>
+        const dropArea = document.getElementById('drop-area');
+        const fileInput = document.getElementById('logo');
+        const previewContainer = document.getElementById('preview-container');
+        const placeholderText = document.getElementById('placeholder-text');
+
+        // Handle drag and drop
+        dropArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropArea.classList.add('bg-gray-100');
+        });
+
+        dropArea.addEventListener('dragleave', () => {
+            dropArea.classList.remove('bg-gray-100');
+        });
+
+        dropArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropArea.classList.remove('bg-gray-100');
+            const files = e.dataTransfer.files;
+            fileInput.files = files; // Attach files to input element
+            handleFileSelect({ target: fileInput });
+        });
+
+        // Handle file input and preview
+        function handleFileSelect(event) {
+            const files = event.target.files;
+            previewContainer.innerHTML = ''; // Clear previous preview
+
+            if (files.length > 0) {
+                const file = files[0];
+
+                // Validate file size
+                if (file.size > 10 * 1024 * 1024) {
+                    alert('File size exceeds 10 MB.');
+                    fileInput.value = ''; // Reset file input
+                    return;
+                }
+
+                // Hide placeholder text
+                placeholderText.style.display = 'none';
+
+                // Create image preview
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.alt = 'Preview';
+                    img.className = 'w-24 h-24 object-cover rounded-lg shadow-md';
+
+                    const info = document.createElement('p');
+                    info.textContent = `File size: ${(file.size / 1024 / 1024).toFixed(2)} MB`;
+                    info.className = 'text-gray-600 mt-2 text-sm';
+
+                    previewContainer.appendChild(img);
+                    previewContainer.appendChild(info);
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 </body>
 </html>
