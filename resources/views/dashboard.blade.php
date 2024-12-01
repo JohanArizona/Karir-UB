@@ -125,135 +125,57 @@
 
   <!-- Job Recommendation -->
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <!-- Container Grid untuk Card -->
-      <h1 class="text-[#003759] text-3xl font-[Montserrat] mb-4 font-semibold">Job Recommendation</h1>
-      <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        <!-- Card 1 -->
+    <h1 class="text-[#003759] text-3xl font-[Montserrat] mb-4 font-semibold">Job Recommendation</h1>
+    <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        @foreach ($jobs as $job)
         <div class="bg-[#FFFAFA] rounded-3xl shadow-xs p-8 border border-2">
-          <div class="flex items-start space-x-6">
-              <!-- Company Logo -->
-              <div class="flex-shrink-0">
-                  <img src="/api/placeholder/120/120" alt="Volkswagen Logo" class="w-32 h-32 rounded-2xl shadow-md">
-              </div>
+            <div class="flex items-start space-x-6">
+                <div class="flex-shrink-0">
+                    <img src="{{ $job->logo }}" alt="Company Logo" class="w-32 h-32 rounded-2xl shadow-md">
+                </div>
+                <div class="flex-grow">
+                    <div class="space-y-2">
+                        <div class="flex items-center space-x-2 text-[#0076BF]">
+                            <i class="fas fa-building"></i>
+                            <span class="text-sm">{{ $job->company_name }}</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>{{ $job->location }}</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
+                            <i class="fas fa-briefcase"></i>
+                            <span>{{ $job->job_type }}</span>
+                        </div>
+                        <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
+                            <i class="far fa-clock"></i>
+                            <span>{{ $job->posted_at->diffForHumans() }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-between items-center mt-6">
+                <div>
+                    <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">{{ $job->title }}</h2>
+                    <p class="text-[#009dff] text-xl font-semibold mt-2">Rp {{ number_format($job->salary, 0, ',', '.') }}</p>
+                </div>
+                <div class="flex space-x-2">
+                    <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
+                        <img src="asset/logo/logo_bookmark.svg" alt="Bookmark Logo" class="w-6 h-auto">
+                    </button>
+                    <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
+                        Apply
+                    </button>
+                </div>
+            </div>
+            <p class="mt-4 text-[#262626] leading-relaxed font-['Montserrat'] text-justify">
+                {{ $job->description }}
+            </p>
+        </div>
+        @endforeach
+    </div>
+</div>
 
-              <!-- Job Details -->
-              <div class="flex-grow">
-                  <div class="space-y-2">
-                      <!-- Company Details -->
-                      <div class="flex items-center space-x-2 text-[#0076BF]">
-                          <i class="fas fa-building"></i>
-                          <span class="text-sm">Volkswagen Indonesia</span>
-                      </div>
-                      
-                      <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <span>Jakarta</span>
-                      </div>
-                      
-                      <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                          <i class="fas fa-briefcase"></i>
-                          <span>Onsite</span>
-                      </div>
-                      
-                      <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                          <i class="far fa-clock"></i>
-                          <span>2 Days Ago</span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="flex justify-between items-center mt-6">
-              <!-- Job Title and Salary -->
-              <div>
-                  <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">Database Admin</h2>
-                  <p class="text-[#009dff] text-xl font-semibold mt-2">Rp 7.000.000</p>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex space-x-2">
-                  <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
-                      <img src="asset/logo/logo_bookmark.svg" alt="Bookmark Logo" class="w-6 h-auto">
-                  </button>
-                  <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                      Apply
-                  </button>
-              </div>
-          </div>
-
-          <!-- Job Description -->
-          <p class="mt-4 text-[#262626] leading-relaxed font-['Montserrat'] text-justify">
-              We are looking for a Database Admin to manage and maintain our databases, ensuring performance, security, and reliability. Ideal candidates have experience in database administration, strong problem-solving skills, and proficiency in SQL.
-          </p>
-      </div>
-
-
-          <!-- Duplikasi Card untuk Menambahkan Lebih Banyak Card -->
-          <div class="bg-[#FFFAFA] rounded-3xl shadow-xs p-8 border border-2">
-              <!-- Konten card sama dengan di atas -->
-          </div>
-          <div class="bg-[#FFFAFA] rounded-3xl shadow-xs p-8 border border-2">
-              <!-- Konten card sama dengan di atas -->
-          </div>
-          <div class="bg-[#FFFAFA] rounded-3xl shadow-xs p-8 border border-2">
-          <div class="flex items-start space-x-6">
-              <!-- Company Logo -->
-              <div class="flex-shrink-0">
-                  <img src="/api/placeholder/120/120" alt="Volkswagen Logo" class="w-32 h-32 rounded-2xl shadow-md">
-              </div>
-
-              <!-- Job Details -->
-              <div class="flex-grow">
-                  <div class="space-y-2">
-                      <!-- Company Details -->
-                      <div class="flex items-center space-x-2 text-[#0076BF]">
-                          <i class="fas fa-building"></i>
-                          <span class="text-sm">Volkswagen Indonesia</span>
-                      </div>
-                      
-                      <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
-                          <i class="fas fa-map-marker-alt"></i>
-                          <span>Jakarta</span>
-                      </div>
-                      
-                      <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                          <i class="fas fa-briefcase"></i>
-                          <span>Onsite</span>
-                      </div>
-                      
-                      <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                          <i class="far fa-clock"></i>
-                          <span>2 Days Ago</span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-
-          <div class="flex justify-between items-center mt-6">
-              <!-- Job Title and Salary -->
-              <div>
-                  <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">Database Admin</h2>
-                  <p class="text-[#009dff] text-xl font-semibold mt-2">Rp 7.000.000</p>
-              </div>
-
-              <!-- Action Buttons -->
-              <div class="flex space-x-2">
-                  <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
-                      <img src="asset/logo/logo_bookmark.svg" alt="Bookmark Logo" class="w-6 h-auto">
-                  </button>
-                  <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                      Apply
-                  </button>
-              </div>
-          </div>
-
-          <!-- Job Description -->
-          <p class="mt-4 text-[#262626] leading-relaxed font-['Montserrat'] text-justify">
-              We are looking for a Database Admin to manage and maintain our databases, ensuring performance, security, and reliability. Ideal candidates have experience in database administration, strong problem-solving skills, and proficiency in SQL.
-          </p>
-          </div>
-      </div>
-  </div>
 
   <!-- Favorite Industry -->
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-8 mt-[-32]">
