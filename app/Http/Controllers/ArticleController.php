@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ArtikelBerita; // Jangan lupa untuk mengimport model
+use App\Models\Loker;
+use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
@@ -13,7 +15,17 @@ class ArticleController extends Controller
         $articles = ArtikelBerita::all(); // Anda bisa menambahkan pagination jika dibutuhkan
     
         // Mengirimkan data ke view dashboard
-        return view('admin.dashboard', compact('articles'));
+        // return view('admin.dashboard', compact('articles'));
+
+        // Ambil data dari Loker
+        $lokers = Loker::orderBy('created_at', 'desc')->get();
+        $lokers->transform(function ($loker) {
+            $loker->days_ago = Carbon::parse($loker->created_at)->diffForHumans();
+            return $loker;
+        });
+
+        // Kirim data ke view
+        return view('admin.dashboard', compact('lokers', 'articles'));
     }
     
 
@@ -101,8 +113,6 @@ class ArticleController extends Controller
         // Redirect ke halaman yang diinginkan
         return redirect()->route('articles.edit', $id_artikel)->with('success', 'Article has been successfully updated');
     }
-    
-    
 
     //Hapus Artikel
     public function destroy($id_artikel)

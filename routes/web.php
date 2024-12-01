@@ -28,12 +28,12 @@ Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin
 Route::get('/admin/dashboard', [AdminLoginController::class, 'dashboard'])->middleware('auth:admin')->name('admin.dashboard');
 Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
 Route::middleware(['auth:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminLoginController::class, 'dashboard'])->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminLoginController::class, 'dashboard'])->name('admin.dashboard');
 });
 
-// Admin Upload Jobs
 use App\Http\Controllers\JobController;
 
+// Admin Upload Jobs
 Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     // Step 1: Menampilkan form
     Route::get('/jobs/create/step1', [JobController::class, 'createStep1'])->name('admin.jobs.create.step1');
@@ -44,9 +44,18 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     Route::get('/jobs/create/step2', [JobController::class, 'createStep2'])->name('admin.jobs.create.step2');
     // Step 2: Menyimpan data ke database
     Route::post('/jobs/create', [JobController::class, 'store'])->name('admin.jobs.store');
+
+    //Hapus Loker
+    Route::delete('/loker/{id}', [JobController::class, 'destroy'])->name('admin.loker.destroy');
+
+    //Edit Loker
+    Route::get('/loker/{id_loker}/edit', [JobController::class, 'edit'])->name('admin.loker.edit');
+
+    //Update Loker
+    Route::put('/loker/{id_loker}', [JobController::class, 'update'])->name('admin.loker.update');
 });
 
-// Admin Upload Artikel
+// Admin Mengelola Artikel
 use App\Http\Controllers\ArticleController;
 
 Route::prefix('admin')->middleware(['auth:admin'])->group(function() {

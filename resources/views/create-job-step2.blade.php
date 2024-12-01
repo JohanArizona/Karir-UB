@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/js/create-job.js'])
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 <body class="bg-white font-[montserrat]">
     <!-- Navigation -->
@@ -102,5 +103,29 @@
                 </form>
         </div>
     </div>
+
+    @if(session('success'))
+        <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: '<strong>Successful!</strong>',
+                    text: '{{ session('success') }}',
+                    confirmButtonColor: '#005E99',
+                    iconColor: '#009DFF',
+                    confirmButtonText: '<strong>Continue</strong>',
+                    customClass: {
+                        popup: 'swal2-popup',
+                        title: 'swal2-title',
+                        content: 'swal2-content',
+                        confirmButton: 'swal2-confirm',
+                        cancelButton: 'swal2-cancel'
+                    }
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.href = "{{ route('admin.jobs.create.step1') }}";
+                    }
+                });
+        </script>
+    @endif
 </body>
 </html>

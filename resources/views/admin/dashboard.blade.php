@@ -46,13 +46,16 @@
                 <h3 class="text-[#003759] text-[30px] font-semibold font-['Montserrat']">Uploaded Jobs</h3>
                 <a href="#" class="text-[#008de6] text- font-bold font-['Montserrat']">View More ></a>
         </div>
+
+        <!-- Bagian Card Loker -->
         <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
-            <!-- Card 1 -->
+        @if(count($lokers) != 0)
+            @foreach($lokers as $loker)
             <div class="bg-white rounded-3xl shadow-lg p-8">
                 <div class="flex items-start space-x-6">
                     <!-- Company Logo -->
                     <div class="flex-shrink-0">
-                        <img src="/api/placeholder/120/120" alt="Volkswagen Logo" class="w-32 h-32 rounded-2xl shadow-md">
+                        <img src="{{ asset('storage/' . $loker->logo_company) }}" alt="{{ $loker->nama_perusahaan }} Logo" class="w-32 h-32 rounded-2xl shadow-md">
                     </div>
 
                     <!-- Job Details -->
@@ -61,22 +64,22 @@
                             <!-- Company Details -->
                             <div class="flex items-center space-x-2 text-[#0076BF]">
                                 <i class="fas fa-building"></i>
-                                <span class="text-sm">Volkswagen Indonesia</span>
+                                <span class="text-sm">{{ $loker->nama_perusahaan }}</span>
                             </div>
                             
                             <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
                                 <i class="fas fa-map-marker-alt"></i>
-                                <span>Jakarta</span>
+                                <span>{{ $loker->kota }}</span>
                             </div>
                             
                             <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
                                 <i class="fas fa-briefcase"></i>
-                                <span>Onsite</span>
+                                <span>{{ $loker->tipe }}</span>
                             </div>
                             
                             <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
                                 <i class="far fa-clock"></i>
-                                <span>2 Days Ago</span>
+                                <span>{{ $loker->days_ago }}</span>
                             </div>
                         </div>
                     </div>
@@ -85,140 +88,57 @@
                 <div class="flex justify-between items-center mt-6">
                     <!-- Job Title and Salary -->
                     <div>
-                        <h2 class="text-xl font-semibold text-gray-800 font-['Montserrat']">Admin</h2>
-                        <p class="text-blue-500 text-xl font-semibold mt-2">Rp 4.000.000</p>
+                        <h2 class="text-xl font-semibold text-gray-800 font-['Montserrat']">{{ $loker->nama_loker }}</h2>
+                        <p class="text-blue-500 text-xl font-semibold mt-2">Rp {{ number_format($loker->gaji, 0, ',', '.') }}</p>
                     </div>
                     <!-- Action Buttons -->
                     <div class="flex space-x-4">
-                        <button class="bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                        <a href="{{ route('admin.loker.edit', $loker->id_loker) }}" class="bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
                             Edit
-                        </button>
-                        <button class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
-                            Delete
-                        </button>
+                        </a>
+                        <form action="{{ route('admin.loker.destroy', $loker->id_loker) }}" method="POST" id="delete-form-{{ $loker->id_loker }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="button" 
+                                    class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']"
+                                    onclick="confirmDeleteLoker({{ $loker->id_loker }})">
+                                Delete
+                            </button>
+                        </form>
                     </div>
                 </div>
                 <!-- Job Description -->
                 <p class="mt-4 text-[#262626] font-['Montserrat'] leading-relaxed text-justify">
-                    We are looking for a Database Admin to manage and maintain our databases, ensuring performance, security, and reliability. Ideal candidates have experience in database administration, strong problem-solving skills, and proficiency in SQL.
+                    {{ $loker->deskripsi }}
                 </p>
             </div>
-
-            <!-- Card 2 -->
-            <div class="bg-white rounded-3xl shadow-lg p-8">
-                <div class="flex items-start space-x-6">
-                    <!-- Company Logo -->
-                    <div class="flex-shrink-0">
-                        <img src="/api/placeholder/120/120" alt="Volkswagen Logo" class="w-32 h-32 rounded-2xl shadow-md">
-                    </div>
-
-                    <!-- Job Details -->
-                    <div class="flex-grow">
-                        <div class="space-y-2">
-                            <!-- Company Details -->
-                            <div class="flex items-center space-x-2 text-[#0076BF]">
-                                <i class="fas fa-building"></i>
-                                <span class="text-sm">Volkswagen Indonesia</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Jakarta</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Onsite</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                                <i class="far fa-clock"></i>
-                                <span>2 Days Ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-between items-center mt-6">
-                    <!-- Job Title and Salary -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-800 font-['Montserrat']">Database Admin</h2>
-                        <p class="text-blue-500 text-xl font-semibold mt-2">Rp 4.000.000</p>
-                    </div>
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-4">
-                        <button class="bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
-                            Edit
-                        </button>
-                        <button class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <!-- Job Description -->
-                <p class="mt-4 text-[#262626] font-['Montserrat'] leading-relaxed text-justify">
-                    We are looking for a Database Admin to manage and maintain our databases, ensuring performance, security, and reliability. Ideal candidates have experience in database administration, strong problem-solving skills, and proficiency in SQL.
-                </p>
-            </div>
-
-        
-            <!-- Card 3 -->
-            <div class="bg-white rounded-3xl shadow-lg p-8">
-                <div class="flex items-start space-x-6">
-                    <!-- Company Logo -->
-                    <div class="flex-shrink-0">
-                        <img src="/api/placeholder/120/120" alt="Volkswagen Logo" class="w-32 h-32 rounded-2xl shadow-md">
-                    </div>
-
-                    <!-- Job Details -->
-                    <div class="flex-grow">
-                        <div class="space-y-2">
-                            <!-- Company Details -->
-                            <div class="flex items-center space-x-2 text-[#0076BF]">
-                                <i class="fas fa-building"></i>
-                                <span class="text-sm">Volkswagen Indonesia</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Jakarta</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                                <i class="fas fa-briefcase"></i>
-                                <span>Onsite</span>
-                            </div>
-                            
-                            <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
-                                <i class="far fa-clock"></i>
-                                <span>2 Days Ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="flex justify-between items-center mt-6">
-                    <!-- Job Title and Salary -->
-                    <div>
-                        <h2 class="text-xl font-semibold text-gray-800 font-['Montserrat']">Programmer</h2>
-                        <p class="text-blue-500 text-xl font-semibold mt-2">Rp 4.000.000</p>
-                    </div>
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-4">
-                        <button class="bg-[#009DFF] hover:bg-[#0070B6] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
-                            Edit
-                        </button>
-                        <button class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
-                            Delete
-                        </button>
-                    </div>
-                </div>
-                <!-- Job Description -->
-                 <p class="mt-4 text-[#262626] font-['Montserrat'] leading-relaxed text-justify">
-                    We are looking for a Database Admin to manage and maintain our databases, ensuring performance, security, and reliability. Ideal candidates have experience in database administration, strong problem-solving skills, and proficiency in SQL.
-                </p>
-            </div>
+            @endforeach
+        @else
+            <p class="font-['Montserrat'] text-xl">Tidak ada data loker.</p>
+        @endif
         </div>
+
+        <!-- Tambahkan script konfirmasi delete -->
+        <script>
+        function confirmDeleteLoker(lokerId) {
+            Swal.fire({
+                title: 'Are you sure? ',
+                text: "This job information will be permanently deleted",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#d33',
+                cancelButtonColor: '#3085d6',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'Cancel',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('delete-form-' + lokerId).submit();
+                }
+            });
+        }
+        </script>
+
+
 
 
         <!-- Uploaded Articles -->
@@ -229,7 +149,7 @@
             </div>
             <div class="space-y-4">
                 <!-- Article Card -->
-                @foreach($articles as $article)
+                @foreach($articles->take(3) as $article)
                     <!-- Article Card -->
                     <div class="bg-white rounded-lg shadow">
                         <div class="flex">
@@ -248,7 +168,7 @@
                                         @method('DELETE')
                                         <button type="button" 
                                                 class="bg-[#F44336] hover:bg-[#B22E24] text-[#fffafa] px-6 py-2 mt-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']"
-                                                onclick="confirmDelete({{ $article->id_artikel }})">
+                                                onclick="confirmDeleteArtikel({{ $article->id_artikel }})">
                                             Delete
                                         </button>
                                     </form>
@@ -266,7 +186,7 @@
     @include('layouts.footer_admin')
 
     <script>
-    function confirmDelete(articleId) {
+    function confirmDeleteArtikel(articleId) {
         Swal.fire({
             title: 'Are You Sure?',
             text: "This article will be permanently deleted!",

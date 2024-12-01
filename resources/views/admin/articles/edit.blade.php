@@ -51,20 +51,7 @@
     </style>
 </head>
 <body class="bg-white font-[montserrat]">
-    <!-- Navigation -->
-    <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
-        <div class="flex items-center space-x-8 mr-8">
-            <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
-            <div class="hidden md:flex space-x-16">
-                <a href="#" class="text-gray-500 text-lg font-semibold">Home</a>
-                <a href="#" class="text-gray-500 text-lg font-semibold">Jobs</a>
-                <a href="#" class="text-gray-500 text-lg font-semibold">Articles</a>
-                <a href="#" class="text-gray-500 text-lg font-semibold">Add Jobs</a>
-                <a href="#" class="text-[#003759] text-lg font-bold">Edit Article</a>
-            </div>
-        </div>
-        <button class="bg-red-500 hover:bg-red-600 text-white px-6 py-2 rounded-md font-medium">Logout</button>
-    </nav>
+    @include('layouts.navbar_admin')
 
     <!-- Background Profile -->
     <div class="absolute w-full -z-10 top-[-160px]">

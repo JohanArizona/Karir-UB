@@ -5,9 +5,76 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Loker;
 use Session;
+use Carbon\Carbon;
 
 class JobController extends Controller
-{
+{   
+
+    public function destroy($id_loker)
+    {
+        $loker = Loker::findOrFail($id_loker);
+        
+        try {
+            $loker->delete();
+            return redirect()->route('admin.dashboard')->with('success', 'Lowongan kerja berhasil dihapus');
+        } catch (\Exception $e) {
+            return redirect()->route('admin.dashboard')->with('error', 'Gagal menghapus lowongan kerja');
+        }
+    }
+
+    public function edit($id_loker)
+    {
+        $loker = Loker::findOrFail($id_loker);
+        return view('admin.loker.edit', compact('loker'));
+    }
+
+    public function update(Request $request, $id_loker)
+    {
+        // Validasi data
+        $validated = $request->validate([
+            'nama_perusahaan' => 'required|string|max:255',
+            'kota' => 'required|string|max:255',
+            'alamat_perusahaan' => 'required|string|max:255',
+            'logo_company' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'nama_loker' => 'required|string|max:255',
+            'workshift' => 'required|string|max:255',
+            'jenjang_minimum' => 'required|string|max:255',
+            'tipe' => 'required|string|max:255',
+            'gaji' => 'required|numeric',
+            'maksimal_usia' => 'required|numeric',
+            'deskripsi' => 'required|string',
+            'no_telp_perusahaan' => 'required|string|max:255',
+        ]);
+    
+        // Ambil data loker berdasarkan id_loker
+        $loker = Loker::findOrFail($id_loker);
+    
+        // Simpan logo perusahaan jika ada file baru
+        if ($request->hasFile('logo_company')) {
+            $logo_path = $request->file('logo_company')->store('logos', 'public');
+            $loker->logo_company = $logo_path;
+        }
+    
+        // Update data loker
+        $loker->nama_perusahaan = $validated['nama_perusahaan'];
+        $loker->kota = $validated['kota'];
+        $loker->alamat_perusahaan = $validated['alamat_perusahaan'];
+        $loker->nama_loker = $validated['nama_loker'];
+        $loker->workshift = $validated['workshift'];
+        $loker->jenjang_minimum = $validated['jenjang_minimum'];
+        $loker->tipe = $validated['tipe'];
+        $loker->gaji = $validated['gaji'];
+        $loker->maksimal_usia = $validated['maksimal_usia'];
+        $loker->deskripsi = $validated['deskripsi'];
+        $loker->no_telp_perusahaan = $validated['no_telp_perusahaan'];
+    
+        // Simpan perubahan
+        $loker->save();
+    
+        return redirect()->route('admin.loker.edit', $id_loker)->with('success', 'Lowongan Kerja berhasil diperbarui.');
+    }
+    
+    
     // Menampilkan form input data step 1
     public function createStep1()
     {
@@ -97,6 +164,7 @@ class JobController extends Controller
         Session::forget('job_data_step1');
 
         // Tambahkan sweet alert untuk notifikasi berhasil
-        return redirect()->route('loker.index')->with('success', 'Lowongan kerja berhasil ditambahkan!');
-    }
+        return redirect()->route('admin.jobs.create.step2')->with('success', 'Lowongan kerja berhasil ditambahkan!');
+    }  
+    
 }
