@@ -3,12 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\ArtikelBerita; // Jangan lupa untuk mengimport model
+use App\Models\ArtikelBerita; 
 use App\Models\Loker;
 use Carbon\Carbon;
 
 class ArticleController extends Controller
 {
+
+    public function welcome()
+    {
+        // Ambil artikel terbaru (bisa diubah sesuai kebutuhan)
+        $articles = ArtikelBerita::latest()->take(5)->get();
+    
+        // Kirim data artikel ke view
+        return view('welcome', compact('articles'));
+    }
+    
     public function index()
     {
         // Mengambil semua artikel

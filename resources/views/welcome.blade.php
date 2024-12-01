@@ -92,71 +92,27 @@
         </div>
     </div>
 
-
-    <!-- Articles Section -->
-    <section class="bg-[#003759] text-white py-12">
-        <div class="w-full max-w-screen-3xl mx-auto px-4">
-            <h2 class="text-4xl font-semibold mb-0 text-center">Check Out Our Articles</h2>
-            <p class="text-xl font-semibold mb-8 text-center">Get to know our newest update</p>
-            <!-- Scrollable Container -->
-                <div class="flex gap-6 overflow-x-auto no-scrollbar ::-webkit-scrollbar">
-                    <!-- Article Card 1 -->
-                    <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-72">
-                        <img src="/path/to/image1.jpg" alt="Building" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-gray-800 text-lg font-medium mb-2">KarirUB Connects 1000+ UB Alumni with Trusted Companies</h3>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Read more →</a>
-                        </div>
-                    </div>
-
-                    <!-- Article Card 2 -->
-                    <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-72">
-                        <img src="/path/to/image2.jpg" alt="Graduation" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-gray-800 text-lg font-medium mb-2">The Advantages of KarirUB: UB Alumni Job Placement Rate Increases by 30%</h3>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Read more →</a>
-                        </div>
-                    </div>
-
-                    <!-- Article Card 3 -->
-                    <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-72">
-                        <img src="/path/to/image3.jpg" alt="Companies" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-gray-800 text-lg font-medium mb-2">Top Companies Entrust Their Recruitment to UB Alumni through KarirUB</h3>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Read more →</a>
-                        </div>
-                    </div>
-
-                    <!-- Article Card 4 -->
-                    <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-72">
-                        <img src="/path/to/image4.jpg" alt="Career Growth" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-gray-800 text-lg font-medium mb-2">Supporting UB Alumni Career Growth: KarirUB Prepares 500+ New Job Opportunities</h3>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Read more →</a>
-                        </div>
-                    </div>
-
-                    <!-- Article Card 5 -->
-                    <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-72">
-                        <img src="/path/to/image4.jpg" alt="Career Growth" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-gray-800 text-lg font-medium mb-2">Supporting UB Alumni Career Growth: KarirUB Prepares 500+ New Job Opportunities</h3>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Read more →</a>
-                        </div>
-                    </div>
-
-                    <!-- Article Card 6 -->
-                    <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-72">
-                        <img src="/path/to/image4.jpg" alt="Career Growth" class="w-full h-48 object-cover">
-                        <div class="p-4">
-                            <h3 class="text-gray-800 text-lg font-medium mb-2">Supporting UB Alumni Career Growth: KarirUB Prepares 500+ New Job Opportunities</h3>
-                            <a href="#" class="text-blue-600 hover:underline text-sm">Read more →</a>
-                        </div>
-                    </div>
+<!-- Articles Section --> 
+<section class="bg-[#003759] text-white py-12">
+    <div class="w-full max-w-screen-3xl mx-auto px-4">
+        <h2 class="text-4xl font-semibold mb-0 text-center">Check Out Our Articles</h2>
+        <p class="text-xl font-semibold mb-8 text-center">Get to know our newest update</p>
+        <!-- Scrollable Container -->
+        <div class="flex gap-6 overflow-x-auto no-scrollbar ::-webkit-scrollbar">
+            @foreach($articles as $article)
+            <div class="flex-shrink-0 bg-white rounded-lg overflow-hidden shadow-md w-80 min-h-[375px] relative">
+                <!-- Cek apakah artikel memiliki gambar, jika tidak tampilkan gambar default -->
+                <img src="{{ asset('storage/' . $article->gambar) }}" alt="{{ $article->title }}" class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="text-gray-800 text-lg font-medium mb-2">{{ $article->judul }}</h3>
+                    <!-- Tombol Read More -->
+                    <a href="#" class="read-more absolute bottom-4 right-4 font-semibold text-sm text-red-600 hover:underline">Read more →</a>
                 </div>
             </div>
+            @endforeach
         </div>
-    </section>
+    </div>
+</section>
 
 
     <!-- Testimonials Section -->

@@ -140,7 +140,6 @@
 
 
 
-
         <!-- Uploaded Articles -->
         <div>
             <div class="flex justify-between items-center mb-4">
@@ -149,7 +148,7 @@
             </div>
             <div class="space-y-4">
                 <!-- Article Card -->
-                @foreach($articles->take(3) as $article)
+                @foreach($articles as $article)
                     <!-- Article Card -->
                     <div class="bg-white rounded-lg shadow">
                         <div class="flex">

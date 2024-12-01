@@ -4,11 +4,28 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Loker;
+use App\Models\ArtikelBerita;
 use Session;
 use Carbon\Carbon;
 
 class JobController extends Controller
 {   
+    
+    public function dashboardUser()
+    {
+        // Mengambil semua artikel
+        $articles = ArtikelBerita::all(); 
+    
+        // Ambil data dari Loker
+        $jobs = Loker::orderBy('created_at', 'desc')->get();
+        $jobs->transform(function ($loker) {
+            $loker->days_ago = Carbon::parse($loker->created_at)->diffForHumans();
+            return $loker;
+        });
+
+        // Kirim data ke view
+        return view('dashboard', compact('jobs', 'articles'));
+    }
 
     public function destroy($id_loker)
     {

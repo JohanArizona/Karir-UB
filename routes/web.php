@@ -1,12 +1,16 @@
 <?php
 
-// User Login
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobController;
+use App\Http\Controllers\AdminLoginController;
+use App\Http\Controllers\ArticleController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/', [ArticleController::class, 'welcome'])->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -16,14 +20,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/dashboard', [ArticleController::class, 'index'])->name('dashboard');
+    Route::get('/dashboard', [JobController::class, 'dashboardUser'])->name('dashboard');
 });
 
 require __DIR__.'/auth.php';
 
 // Admin Login 
-use App\Http\Controllers\AdminLoginController;
-
 Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AdminLoginController::class, 'login'])->name('admin.login.submit');
 Route::get('/admin/dashboard', [AdminLoginController::class, 'dashboard'])->middleware('auth:admin')->name('admin.dashboard');
@@ -31,8 +33,6 @@ Route::post('/admin/logout', [AdminLoginController::class, 'logout'])->name('adm
 Route::middleware(['auth:admin'])->group(function () {
 Route::get('/admin/dashboard', [AdminLoginController::class, 'dashboard'])->name('admin.dashboard');
 });
-
-use App\Http\Controllers\JobController;
 
 // Admin Upload Jobs
 Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
@@ -57,8 +57,6 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
 });
 
 // Admin Mengelola Artikel
-use App\Http\Controllers\ArticleController;
-
 Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     Route::get('/articles/create', [ArticleController::class, 'create'])->name('articles.create');
     Route::post('/articles', [ArticleController::class, 'store'])->name('articles.store');

@@ -131,33 +131,33 @@
         <div class="bg-[#FFFAFA] rounded-3xl shadow-xs p-8 border border-2">
             <div class="flex items-start space-x-6">
                 <div class="flex-shrink-0">
-                    <img src="{{ $job->logo }}" alt="Company Logo" class="w-32 h-32 rounded-2xl shadow-md">
+                    <img src="{{ asset('storage/' . $job->logo_company) }}" alt="Company Logo" class="w-32 h-32 rounded-2xl shadow-md">
                 </div>
                 <div class="flex-grow">
                     <div class="space-y-2">
                         <div class="flex items-center space-x-2 text-[#0076BF]">
                             <i class="fas fa-building"></i>
-                            <span class="text-sm">{{ $job->company_name }}</span>
+                            <span class="text-sm">{{ $job->nama_perusahaan }}</span>
                         </div>
                         <div class="flex items-center space-x-2 text-sm text-[#0076BF]">
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>{{ $job->location }}</span>
+                            <span>{{ $job->kota }}</span>
                         </div>
                         <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
                             <i class="fas fa-briefcase"></i>
-                            <span>{{ $job->job_type }}</span>
+                            <span>{{ $job->tipe }}</span>
                         </div>
                         <div class="flex items-center space-x-2 text-[#0076BF] text-sm">
                             <i class="far fa-clock"></i>
-                            <span>{{ $job->posted_at->diffForHumans() }}</span>
+                            <span>{{ $job->days_ago }}</span>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="flex justify-between items-center mt-6">
                 <div>
-                    <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">{{ $job->title }}</h2>
-                    <p class="text-[#009dff] text-xl font-semibold mt-2">Rp {{ number_format($job->salary, 0, ',', '.') }}</p>
+                    <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">{{ $job->nama_loker }}</h2>
+                    <p class="text-[#009dff] text-xl font-semibold mt-2">Rp {{ number_format($job->gaji, 0, ',', '.') }}</p>
                 </div>
                 <div class="flex space-x-2">
                     <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
@@ -169,7 +169,7 @@
                 </div>
             </div>
             <p class="mt-4 text-[#262626] leading-relaxed font-['Montserrat'] text-justify">
-                {{ $job->description }}
+                {{ $job->deskripsi }}
             </p>
         </div>
         @endforeach
