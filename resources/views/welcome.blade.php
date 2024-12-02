@@ -13,7 +13,7 @@
     @include('layouts.navigation')
 
     <!-- Hero Section -->
-    <div class="bg-[#E6E6E6] h-[90vh] max-w-full mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+    <div class=" bg-[#e6e6e6]/50 h-[90vh] max-w-full mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div class="ml-8">
             <h1 class="text-5xl font-bold mb-4">
                 Find Your Dream Job <br> With<span class="text-[#005E99]"> KarirUB</span>

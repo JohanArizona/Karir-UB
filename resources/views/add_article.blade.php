@@ -108,17 +108,23 @@
                 </div>
 
                 <!-- Cover Image -->
-                <div>
-                    <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
-                    <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden" required>
-                    <div class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
-                         onclick="document.getElementById('cover_image').click()">
-                        <img src="asset/upload_icon.svg" alt="Upload Icon" class="w-8 h-8">
-                        <span class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
-                        <span class="text-xs text-gray-400">Max 10 MB files are allowed</span>
-                    </div>
-                    <p id="file-name" class="mt-2 text-sm text-gray-500"></p> <!-- Display file name here -->
-                </div>
+<!-- Cover Image -->
+<div>
+    <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
+    <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden" required onchange="handleFilePreview(event)">
+    <div id="preview-container"
+         class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
+         onclick="document.getElementById('cover_image').click()">
+        <div id="placeholder" class="flex flex-col items-center space-y-2">
+            <img src="asset/upload_icon.svg" alt="Upload Icon" class="w-8 h-8">
+            <span class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
+            <span class="text-xs text-gray-400">Max 10 MB files are allowed</span>
+        </div>
+    </div>
+</div>
+
+
+
 
                 <!-- Submit Button -->
                 <div class="flex justify-end">
@@ -181,6 +187,71 @@
             // If validation passes, submit the form
             this.submit();
         });
+
+        function handleFilePreview(event) {
+    const fileInput = event.target;
+    const previewContainer = document.getElementById('preview-container');
+    const placeholder = document.getElementById('placeholder');
+
+    // Clear existing content in the preview container
+    previewContainer.innerHTML = '';
+
+    if (fileInput.files && fileInput.files[0]) {
+        const file = fileInput.files[0];
+        const fileReader = new FileReader();
+
+        // Validate file type
+        if (!file.type.startsWith('image/')) {
+            Swal.fire({
+                icon: 'error',
+                title: 'Invalid File',
+                text: 'Please upload a valid image file.',
+                confirmButtonColor: '#005E99',
+            });
+            fileInput.value = ''; // Clear invalid file
+            return;
+        }
+
+        // Validate file size (10MB limit)
+        const maxFileSize = 10 * 1024 * 1024; // 10MB in bytes
+        if (file.size > maxFileSize) {
+            Swal.fire({
+                icon: 'error',
+                title: 'File Too Large',
+                text: 'The file exceeds the 10 MB limit.',
+                confirmButtonColor: '#005E99',
+            });
+            fileInput.value = ''; // Clear invalid file
+            return;
+        }
+
+        // Read the file and display the preview
+        fileReader.onload = function (e) {
+            // Create image preview
+            const imgPreview = document.createElement('img');
+            imgPreview.src = e.target.result;
+            imgPreview.alt = 'Image Preview';
+            imgPreview.className = 'h-20 w-20 object-cover rounded-md shadow-md mb-2';
+
+            // Create file size text
+            const fileSizeKB = (file.size / 1024).toFixed(2); // Convert to KB
+            const fileInfoText = document.createElement('span');
+            fileInfoText.textContent = `Size: ${fileSizeKB} KB`;
+            fileInfoText.className = 'text-xs text-gray-500';
+
+            // Append preview and file size to the container
+            previewContainer.appendChild(imgPreview);
+            previewContainer.appendChild(fileInfoText);
+        };
+
+        fileReader.readAsDataURL(file);
+    } else {
+        // Restore placeholder if no file is selected
+        previewContainer.innerHTML = placeholder.outerHTML;
+    }
+}
+
+
     </script>
 </body>
 </html>
