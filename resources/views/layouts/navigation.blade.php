@@ -12,6 +12,6 @@
         </div>
         <div class="flex space-x-4">
         <a href="{{ route('login') }}" class="font-semibold px-12 py-2 text-[#003759] rounded-full border-2 border-[#003759]">Login</a>
-        <a href="{{ route('register') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full">Register</a>
+        <a href="{{ route('register.showStep1') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full">Register</a>
         </div>
     </nav>

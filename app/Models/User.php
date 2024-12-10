@@ -23,7 +23,14 @@ class User extends Authenticatable
         'password',
         'nomer_telpon',
         'kota',
+        'tanggal_lahir',
     ];
+
+    // Relasi dengan tabel jenjang_pendidikan
+    public function pendidikan()
+    {
+        return $this->hasMany(JenjangPendidikan::class, 'id_user');
+    }
 
     protected $hidden = [
         'password',

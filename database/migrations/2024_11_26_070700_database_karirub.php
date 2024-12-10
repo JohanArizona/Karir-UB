@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('password');  
             $table->string('nomer_telpon')->nullable();
             $table->string('kota')->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->timestamps();
         });
 
@@ -27,7 +28,6 @@ return new class extends Migration
         Schema::create('jenjang_pendidikan', function (Blueprint $table) {
             $table->id('id_jenjang_pendidikan');
             $table->unsignedBigInteger('id_user');
-            $table->enum('jenjang', ['D3', 'D4', 'S1', 'S2', 'S3']);
             $table->string('fakultas');
             $table->string('program_studi');
             $table->year('tahun_lulus');

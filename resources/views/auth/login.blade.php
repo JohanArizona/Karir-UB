@@ -56,7 +56,7 @@
         </button>
       </form>
       <p class="mt-4 text-[22px] ml-20">
-        Don’t have an account? <a href="{{ route('register') }}" class="text-[#003759] font-semibold">Register</a>
+        Don’t have an account? <a href="{{ route('register.showStep1') }}" class="text-[#003759] font-semibold">Register</a>
       </p>
     </div>
     <!-- Bagian kanan -->

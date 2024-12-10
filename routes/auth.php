@@ -12,10 +12,18 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    Route::get('register', [RegisteredUserController::class, 'create'])
-        ->name('register');
+        
+    // Registrasi langkah pertama
+    Route::get('register', [RegisteredUserController::class, 'showStep1'])
+        ->name('register.showStep1');
+    Route::post('register', [RegisteredUserController::class, 'processStep1'])
+        ->name('register.processStep1');
 
-    Route::post('register', [RegisteredUserController::class, 'store']);
+    // Registrasi langkah kedua
+    Route::get('register-step2', [RegisteredUserController::class, 'showStep2'])
+        ->name('register.showStep2');
+    Route::post('register-complete', [RegisteredUserController::class, 'completeRegistration'])
+        ->name('register.complete');
 
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
         ->name('login');
