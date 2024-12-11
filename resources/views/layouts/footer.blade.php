@@ -3,7 +3,7 @@
     <div class="container mx-auto px-6 md:flex justify-between">
         <!-- Main Footer Content -->
         <div class="mb-8 md:mb-0 mx-0">
-            <img src="asset/logo_karirub_putih.svg" alt="KarirUB Logo" class="h-14 mr-12">
+            <img src="{{ asset('asset/logo_karirub_putih.svg') }}" alt="KarirUB Logo" class="h-14 mr-12">
             <p class="font-bold text-lg">Apply and get your job today</p>
         </div>
 
@@ -44,18 +44,18 @@
 
         <!-- Social Media Icons -->
         <div class="flex space-x-4 absolute -top-14 right-0">
-            <a href="#"><img src="asset/logo_medsos/logo_ig.svg" alt="Instagram" class="w-8 h-8"></a>
-            <a href="#"><img src="asset/logo_medsos/logo_x.svg" alt="Twitter" class="w-8 h-8"></a>
-            <a href="#"><img src="asset/logo_medsos/logo_fb.svg" alt="Facebook" class="w-8 h-8"></a>
-            <a href="#"><img src="asset/logo_medsos/logo_tiktok.svg" alt="Tiktok" class="w-8 h-8"></a>
-            <a href="#"><img src="asset/logo_medsos/logo_path.svg" alt="Path" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com/rizon_hanz/"><img src="{{ asset('asset/logo_medsos/logo_ig.svg') }}" alt="Instagram" class="w-8 h-8"></a>
+            <a href="#"><img src="{{ asset('asset/logo_medsos/logo_x.svg') }}" alt="Twitter" class="w-8 h-8"></a>
+            <a href="#"><img src="{{ asset('asset/logo_medsos/logo_fb.svg') }}" alt="Facebook" class="w-8 h-8"></a>
+            <a href="#"><img src="{{ asset('asset/logo_medsos/logo_tiktok.svg') }}" alt="Tiktok" class="w-8 h-8"></a>
+            <a href="#"><img src="{{ asset('asset/logo_medsos/logo_path.svg') }}" alt="Path" class="w-8 h-8"></a>
         </div>
     </div>
 
     <!-- Help Button -->
     <a href="https://api.whatsapp.com/send/?phone=%2B6281217260945&text&type=phone_number&app_absent=0" class="fixed bottom-8 right-8">
         <button class="bg-blue-500 text-[#FFFAFA] px-6 py-3 rounded-full hover:bg-blue-600 flex items-center space-x-2">
-            <img src="asset/logo_bantuan.svg" alt="Bantuan" class="w-6 h-6">
+            <img src="{{ asset('asset/logo_bantuan.svg') }}" alt="Bantuan" class="w-6 h-6">
             <span>Bantuan</span>
         </button>
     </a>

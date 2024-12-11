@@ -20,17 +20,18 @@
             </h1>
             <p class="text-black mb-4 mt-10 text-2xl font-semibold">Get a job that fits your profile today</p>
             
-            <form action="#" method="GET" class="relative max-w-md">
+            <form action="{{ route('search.loker') }}" method="GET" class="relative max-w-md">
                 <input
                     type="text"
                     name="query"
-                    placeholder="Position or Company"
+                    placeholder="Position or Jobs"
                     class="w-full p-4 pr-24 rounded-full border border-[#003759]"
                 >
                 <button type="submit" class="absolute right-0 top-0 h-full px-8 bg-[#005E99] text-white rounded-full">
                     Search
                 </button>
             </form>
+            
         </div>
         <div class="relative hidden md:block mb-24 ml-auto">
             <img src="asset/foto_dashboard.svg" alt="Professional" class="object-contain">

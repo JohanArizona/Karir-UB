@@ -20,7 +20,8 @@
           </h1>
 
           <!-- Search Bar -->
-          <div class="relative max-w-[650px] w-full">
+
+          <form action="{{ route('search.lokerLogin') }}" method="GET" class="relative max-w-[650px] w-full">
               <!-- Ikon search -->
               <img 
                   src="asset/logo/search_putih.svg" 
@@ -30,8 +31,9 @@
               
               <!-- Input field -->
               <input 
-                  type="text" 
-                  placeholder="Position or Company" 
+                  type="text"
+                  name="query"
+                  placeholder="Position or Jobs"
                   class="w-full pl-14 pr-4 py-4 border text-lg h-20 border-[#B0B0B0] rounded-full focus:outline-none focus:border-[#003759] bg-[#FFFAFA]"
               >
 
@@ -41,8 +43,7 @@
               >
                   Search
               </button>
-          </div>
-
+          </form>
     </div>
     <div class="relative w-full overflow-hidden">
     <!-- Container untuk carousel gambar -->
@@ -163,9 +164,10 @@
                     <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
                         <img src="asset/logo/logo_bookmark.svg" alt="Bookmark Logo" class="w-6 h-auto">
                     </button>
-                    <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
+                    <a href="https://api.whatsapp.com/send/?phone={{ urlencode($job->no_telp_perusahaan) }}&text=Halo,+saya+ingin+melamar+untuk+{{ urlencode($job->nama_loker) }}+di+{{ urlencode($job->nama_perusahaan) }}."
+                        class="bg-[#009DFF] hover:bg-[#0076BF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px] text-center block">
                         Apply
-                    </button>
+                    </a>
                 </div>
             </div>
             <p class="mt-4 text-[#262626] leading-relaxed font-['Montserrat'] text-justify">

@@ -183,5 +183,62 @@ class JobController extends Controller
         // Tambahkan sweet alert untuk notifikasi berhasil
         return redirect()->route('admin.jobs.create.step2')->with('success', 'Lowongan kerja berhasil ditambahkan!');
     }  
-    
+
+    //Search Loker
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        
+        $results = Loker::where('nama_loker', 'like', '%' . $query . '%')
+            ->orWhere('nama_perusahaan', 'like', '%' . $query . '%')
+            // ->with('nama_perusahaan') // Eager loading relasi perusahaan jika ada
+            ->get()
+            ->map(function($loker) {
+                return [
+                    'title' => $loker->nama_loker,
+                    'company' => $loker->nama_perusahaan,
+                    'company_logo' => $loker->logo_company,
+                    'location' => $loker->kota,
+                    'work_type' => $loker->tipe,
+                    'posted_at' => $loker->created_at,
+                    'salary' => $loker->gaji,
+                    'description' => $loker->deskripsi,
+                    // Tambahkan field lain sesuai kebutuhan
+                ];
+            });
+        
+        return view('findjobs_guest', [
+            'jobs' => $results, 
+            'query' => $query
+        ]);
+    }
+
+    //Search Loker
+    public function searchLogin(Request $request)
+    {
+        $query = $request->input('query');
+        
+        $results = Loker::where('nama_loker', 'like', '%' . $query . '%')
+            ->orWhere('nama_perusahaan', 'like', '%' . $query . '%')
+            // ->with('nama_perusahaan') // Eager loading relasi perusahaan jika ada
+            ->get()
+            ->map(function($loker) {
+                return [
+                    'title' => $loker->nama_loker,
+                    'company' => $loker->nama_perusahaan,
+                    'company_logo' => $loker->logo_company,
+                    'location' => $loker->kota,
+                    'work_type' => $loker->tipe,
+                    'posted_at' => $loker->created_at,
+                    'salary' => $loker->gaji,
+                    'description' => $loker->deskripsi,
+                    // Tambahkan field lain sesuai kebutuhan
+                ];
+            });
+        
+        return view('findjobs_afterlogin', [
+            'jobs' => $results, 
+            'query' => $query
+        ]);
+    }
 }

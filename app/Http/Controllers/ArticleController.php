@@ -18,6 +18,24 @@ class ArticleController extends Controller
         // Kirim data artikel ke view
         return view('welcome', compact('articles'));
     }
+
+    public function userArticle()
+    {
+        // Ambil artikel terbaru (bisa diubah sesuai kebutuhan)
+        $articles = ArtikelBerita::latest()->take(5)->get();
+    
+        // Kirim data artikel ke view
+        return view('userArtikel', compact('articles'));
+    }
+
+    public function adminArticle()
+    {
+        // Ambil artikel terbaru (bisa diubah sesuai kebutuhan)
+        $articles = ArtikelBerita::latest()->take(5)->get();
+    
+        // Kirim data artikel ke view
+        return view('adminArtikel', compact('articles'));
+    }
     
     public function index()
     {

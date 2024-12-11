@@ -17,13 +17,18 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/dashboard', [JobController::class, 'dashboardUser'])->name('dashboard');
+    //Search Loker Setelah Login
+    Route::get('user/search', [JobController::class, 'searchLogin'])->name('search.lokerLogin');
+    Route::get('/articles', [ArticleController::class, 'userArticle'])->name('userArticles');
 });
 
 require __DIR__.'/auth.php';
+
+//Search Loker Sebelum Login
+Route::get('guest/search', [JobController::class, 'search'])->name('search.loker');
 
 // Admin Login 
 Route::get('/admin/login', [AdminLoginController::class, 'showLoginForm'])->name('admin.login');
@@ -54,6 +59,8 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
 
     //Update Loker
     Route::put('/loker/{id_loker}', [JobController::class, 'update'])->name('admin.loker.update');
+
+    Route::get('/admin/articles', [ArticleController::class, 'adminArticle'])->name('adminArticles');
 });
 
 // Admin Mengelola Artikel
