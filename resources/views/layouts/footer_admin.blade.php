@@ -44,7 +44,7 @@
 
         <!-- Social Media Icons -->
         <div class="flex space-x-4 absolute -top-14 right-0">
-            <a href="#"><img src="{{ asset('asset/logo_medsos/logo_ig.svg') }}" alt="Instagram" class="w-8 h-8"></a>
+            <a href="https://www.instagram.com/rizon_hanz/"><img src="{{ asset('asset/logo_medsos/logo_ig.svg') }}" alt="Instagram" class="w-8 h-8"></a>
             <a href="#"><img src="{{ asset('asset/logo_medsos/logo_x.svg') }}" alt="Twitter" class="w-8 h-8"></a>
             <a href="#"><img src="{{ asset('asset/logo_medsos/logo_fb.svg') }}" alt="Facebook" class="w-8 h-8"></a>
             <a href="#"><img src="{{ asset('asset/logo_medsos/logo_tiktok.svg') }}" alt="Tiktok" class="w-8 h-8"></a>

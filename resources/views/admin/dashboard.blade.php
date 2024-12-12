@@ -44,7 +44,7 @@
         <!-- Container for Cards -->
         <div class="flex justify-between items-center mb-4">
                 <h3 class="text-[#003759] text-[30px] font-semibold font-['Montserrat']">Uploaded Jobs</h3>
-                <a href="#" class="text-[#008de6] text- font-bold font-['Montserrat']">View More ></a>
+                <a href="{{ route('adminJob') }}" class="text-[#008de6] text- font-bold font-['Montserrat']">View More ></a>
         </div>
 
         <!-- Bagian Card Loker -->
@@ -144,7 +144,7 @@
         <div>
             <div class="flex justify-between items-center mb-4">
                 <h3 class="text-[#003759] text-[30px] font-semibold font-['Montserrat']">Uploaded Articles</h3>
-                <a href="#" class="text-[#008de6] text- font-bold font-['Montserrat']">View More ></a>
+                <a href="{{ route('adminArticles') }}" class="text-[#008de6] text- font-bold font-['Montserrat']">View More ></a>
             </div>
             <div class="space-y-4">
                 <!-- Article Card -->

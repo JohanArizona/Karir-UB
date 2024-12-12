@@ -29,20 +29,17 @@ class JobController extends Controller
 
     public function adminJobs()
     {
-        // Mengambil semua artikel
-        $articles = ArtikelBerita::all(); 
-    
-        // Ambil data dari Loker
-        $jobs = Loker::orderBy('created_at', 'desc')->get();
-        $jobs->transform(function ($loker) {
+        $lokers = Loker::orderBy('created_at', 'desc')->get();
+        $lokers->transform(function ($loker) {
             $loker->days_ago = Carbon::parse($loker->created_at)->diffForHumans();
             return $loker;
         });
 
         // Kirim data ke view
-        return view('adminJob', compact('jobs', 'articles'));
+        return view('adminJob', compact('lokers'));
     }
 
+    //Hapus Loker Dari Dashboard
     public function destroy($id_loker)
     {
         $loker = Loker::findOrFail($id_loker);
@@ -52,6 +49,19 @@ class JobController extends Controller
             return redirect()->route('admin.dashboard')->with('success', 'Lowongan kerja berhasil dihapus');
         } catch (\Exception $e) {
             return redirect()->route('admin.dashboard')->with('error', 'Gagal menghapus lowongan kerja');
+        }
+    }
+
+    //Hapus Loker Dari Halaman Jobs
+    public function adminHapusJobs($id_loker)
+    {
+        $loker = Loker::findOrFail($id_loker);
+        
+        try {
+            $loker->delete();
+            return redirect()->route('adminJob')->with('success', 'Lowongan kerja berhasil dihapus');
+        } catch (\Exception $e) {
+            return redirect()->route('adminJob')->with('error', 'Gagal menghapus lowongan kerja');
         }
     }
 

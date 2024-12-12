@@ -51,7 +51,10 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     // Step 2: Menyimpan data ke database
     Route::post('/jobs/create', [JobController::class, 'store'])->name('admin.jobs.store');
 
-    //Hapus Loker
+    //Hapus Loker Dari Halaman Jobs
+    Route::delete('/jobs/{id}', [JobController::class, 'adminHapusJobs'])->name('admin.hapusJobs');
+
+    //Hapus Loker Dari Dashboard
     Route::delete('/loker/{id}', [JobController::class, 'destroy'])->name('admin.loker.destroy');
 
     //Edit Loker
@@ -60,10 +63,10 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     //Update Loker
     Route::put('/loker/{id_loker}', [JobController::class, 'update'])->name('admin.loker.update');
 
-    Route::get('/admin/articles', [ArticleController::class, 'adminArticle'])->name('adminArticles');
-
     Route::get('/admin/jobs', [JobController::class, 'adminJobs'])->name('adminJob');
 });
+
+
 
 // Admin Mengelola Artikel
 Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
@@ -73,13 +76,19 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     // Dashboard untuk menampilkan daftar artikel
     Route::get('/dashboard', [ArticleController::class, 'index'])->name('admin.dashboard');
 
+    //Navbar Articles
+    Route::get('/articles', [ArticleController::class, 'adminArticle'])->name('adminArticles');
+
     // Route untuk halaman edit artikel
     Route::get('/articles/{id_artikel}/edit', [ArticleController::class, 'edit'])->name('articles.edit');
     
     // Route untuk halaman update artikel
     Route::put('/articles/{id_artikel}', [ArticleController::class, 'update'])->name('articles.update');
 
-    // Route untuk Delete
+    // Route untuk Delete Dari Dashboard
     Route::delete('/articles/{id_artikel}', [ArticleController::class, 'destroy'])->name('articles.destroy');
+
+    // Route untuk Delete dari Halaman Articles
+    Route::delete('/articles/delete/{id_artikel}', [ArticleController::class, 'adminHapusArticles'])->name('admin.HapusArticles');
 
 });

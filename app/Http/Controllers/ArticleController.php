@@ -36,6 +36,21 @@ class ArticleController extends Controller
         // Kirim data artikel ke view
         return view('adminArtikel', compact('articles'));
     }
+
+    //Hapus Artikel
+    public function adminHapusArticles($id_artikel)
+    {
+        // Cari artikel berdasarkan id_artikel
+        $article = ArtikelBerita::find($id_artikel);
+    
+        if ($article) {
+            // Hapus artikel
+            $article->delete();
+            return redirect()->route('adminArticles')->with('success', 'Artikel berhasil dihapus');
+        }
+    
+        return redirect()->route('adminArticles')->with('error', 'Artikel tidak ditemukan');
+    }
     
     public function index()
     {
@@ -153,8 +168,6 @@ class ArticleController extends Controller
             $article->delete();
             return redirect()->route('admin.dashboard')->with('success', 'Artikel berhasil dihapus');
         }
-    
-        return redirect()->route('admin.dashboard')->with('error', 'Artikel tidak ditemukan');
     }
     
     

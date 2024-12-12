@@ -117,9 +117,8 @@
 
                 <!-- Submit Button -->
                 <div class="flex justify-end">
-                    <button type="submit" 
-                            class="bg-[#005E99] hover:bg-[#005481] text-white font-medium py-2 px-6 rounded-md w-[100px] h-[40px]">
-                        Save Changes
+                    <button type="submit" class="bg-[#005E99] hover:bg-[#005481] text-white font-medium py-2 px-4 rounded-md w-[100px] h-[40px]">
+                        Update
                     </button>
                 </div>
             </form>
