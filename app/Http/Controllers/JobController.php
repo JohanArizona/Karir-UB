@@ -27,6 +27,22 @@ class JobController extends Controller
         return view('dashboard', compact('jobs', 'articles'));
     }
 
+    public function adminJobs()
+    {
+        // Mengambil semua artikel
+        $articles = ArtikelBerita::all(); 
+    
+        // Ambil data dari Loker
+        $jobs = Loker::orderBy('created_at', 'desc')->get();
+        $jobs->transform(function ($loker) {
+            $loker->days_ago = Carbon::parse($loker->created_at)->diffForHumans();
+            return $loker;
+        });
+
+        // Kirim data ke view
+        return view('adminJob', compact('jobs', 'articles'));
+    }
+
     public function destroy($id_loker)
     {
         $loker = Loker::findOrFail($id_loker);

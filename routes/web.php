@@ -61,6 +61,8 @@ Route::prefix('admin')->middleware(['auth:admin'])->group(function() {
     Route::put('/loker/{id_loker}', [JobController::class, 'update'])->name('admin.loker.update');
 
     Route::get('/admin/articles', [ArticleController::class, 'adminArticle'])->name('adminArticles');
+
+    Route::get('/admin/jobs', [JobController::class, 'adminJobs'])->name('adminJob');
 });
 
 // Admin Mengelola Artikel

@@ -148,6 +148,7 @@
             </div>
             <div class="space-y-4">
                 <!-- Article Card -->
+            @if(count($articles) != 0)
                 @foreach($articles as $article)
                     <!-- Article Card -->
                     <div class="bg-white rounded-lg shadow">
@@ -178,6 +179,9 @@
                         </div>
                     </div>
                 @endforeach
+            @else
+                <p class="font-['Montserrat'] text-xl">Tidak ada data artikel.</p>
+            @endif
             </div>
         </div>
     </main>
