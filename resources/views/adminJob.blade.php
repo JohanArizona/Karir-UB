@@ -61,13 +61,13 @@
                         <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">Database Admin</h2>
                         <p class="text-[#009dff] text-xl font-semibold mt-2">Rp 7.000.000</p>
                     </div>
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-2">
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors ">
-                            <img src="asset/logo/bookmark_gray.svg" alt="Bookmark Logo">
+                   <!-- Action Buttons -->
+                   <div class="flex space-x-4">
+                        <button class="bg-[#009DFF] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                            Edit
                         </button>
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                            Apply
+                        <button class="bg-[#F44336] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
+                            Delete
                         </button>
                     </div>
                 </div>
@@ -118,13 +118,13 @@
                         <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">Programmer</h2>
                         <p class="text-[#009dff] text-xl font-semibold mt-2">Rp 4.000.000</p>
                     </div>
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-2">
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors">
-                            <img src="asset/logo/bookmark_gray.svg" alt="Bookmark Logo">
+                   <!-- Action Buttons -->
+                   <div class="flex space-x-4">
+                        <button class="bg-[#009DFF] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                            Edit
                         </button>
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                            Apply
+                        <button class="bg-[#F44336] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
+                            Delete
                         </button>
                     </div>
                 </div>
@@ -175,13 +175,13 @@
                         <h2 class="text-normal font-semibold text-[#262626] font-[montserrat]">Social Media Admin</h2>
                         <p class="text-[#009dff] text-xl font-semibold mt-2">Rp 7.000.000</p>
                     </div>
-                    <!-- Action Buttons -->
-                    <div class="flex space-x-2">
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors">
-                            <img src="asset/logo/bookmark_gray.svg" alt="Bookmark Logo">
+                   <!-- Action Buttons -->
+                   <div class="flex space-x-4">
+                        <button class="bg-[#009DFF] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                            Edit
                         </button>
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                            Apply
+                        <button class="bg-[#F44336] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
+                            Delete
                         </button>
                     </div>
                 </div>
@@ -233,12 +233,12 @@
                         <p class="text-[#009dff] text-xl font-semibold mt-2">Rp 4.000.000</p>
                     </div>
                     <!-- Action Buttons -->
-                    <div class="flex space-x-2">
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors">
-                            <img src="asset/logo/bookmark_gray.svg" alt="Bookmark Logo">
+                    <div class="flex space-x-4">
+                        <button class="bg-[#009DFF] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat']">
+                            Edit
                         </button>
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                            Apply
+                        <button class="bg-[#F44336] hover:bg-[#004773] text-[#fffafa] px-8 py-2 rounded-full text-sm font-bold transition-colors font-['Montserrat'] ">
+                            Delete
                         </button>
                     </div>
                 </div>
