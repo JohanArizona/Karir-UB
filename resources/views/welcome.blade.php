@@ -131,7 +131,7 @@
                 <div class="p-4">
                     <h3 class="text-gray-800 text-lg font-medium mb-2">{{ $article->judul }}</h3>
                     <!-- Tombol Read More -->
-                    <a href="#" class="read-more absolute bottom-4 right-4 font-semibold text-sm text-red-600 hover:underline">Read more →</a>
+                    <a href="{{ route('guestDetailArticles', $article->id_artikel) }}" class="read-more absolute bottom-4 right-4 font-semibold text-sm text-red-600 hover:underline">Read more →</a>
                 </div>
             </div>
             @endforeach

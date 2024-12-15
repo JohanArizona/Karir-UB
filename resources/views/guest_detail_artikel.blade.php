@@ -4,10 +4,12 @@
     // Ambil artikel lainnya (selain yang terbaru)
     $otherArticles = $articles->except($latestArticle->id_artikel);
 @endphp
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>KarirUB - Find Your Dream Job</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -16,9 +18,9 @@
 <body>
 
     <!-- Navbar -->
-    @include('layouts.navbar_usernondash')
-    
-<!-- Article -->
+    @include('layouts.navigation')
+
+    <!-- Article -->
     <div class="max-w-7xl mx-auto py-12 px-6">
         <div class="flex flex-col lg:flex-row items-start gap-12">
             <!-- Main Article Section -->
@@ -52,10 +54,10 @@
 
             <!-- Artikel Terbaru (Latest) -->
             <div class="flex flex-col gap-4 mb-6">
-                <a href="{{ route('userDetailArticles', $latestArticle->id_artikel) }}">
+                <a href="{{ route('guestDetailArticles', $latestArticle->id_artikel) }}">
                     <img src="{{ asset('storage/' . $latestArticle->gambar) }}" alt="{{ $latestArticle->judul }}" class="w-[440px] h-[260px] flex-shrink-0 object-cover">
                 </a>
-                <a href="{{ route('userDetailArticles', $latestArticle->id_artikel) }}" class="text-[#262626] font-montserrat text-[20px] font-semibold leading-normal pb-6">
+                <a href="{{ route('guestDetailArticles', $latestArticle->id_artikel) }}" class="text-[#262626] font-montserrat text-[20px] font-semibold leading-normal pb-6">
                     {{ $latestArticle->judul }}
                 </a>
             </div>
@@ -64,7 +66,7 @@
             <div class="flex flex-col gap-4">
                 @foreach ($otherArticles as $other)
                 <div class="flex gap-4">
-                    <a href="{{ route('userDetailArticles', $other->id_artikel) }}" class="flex-shrink-0">
+                    <a href="{{ route('guestDetailArticles', $other->id_artikel) }}" class="flex-shrink-0">
                         <img src="{{ asset('storage/' . $other->gambar) }}" alt="{{ $other->judul }}" class="w-[210px] h-[140px] object-cover pb-6">
                     </a>
                     <a href="{{ route('userDetailArticles', $other->id_artikel) }}" class="text-[#262626] font-montserrat text-[18px] font-semibold leading-normal pb-6">
@@ -77,10 +79,8 @@
     </div>
     </div>
 
-    
 <!-- Footer -->
 @include('layouts.footer')
+
 </body>
 </html>
-
-    

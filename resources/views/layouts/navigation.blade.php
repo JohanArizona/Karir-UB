@@ -6,10 +6,10 @@
             <img src="{{ asset('asset/logo_karirub.svg') }}" alt="KarirUB Logo" class="h-14 ml-4">
             </a>
             <div class="hidden md:flex space-x-20">
-                <a href="#" class="text-[#003759] font-semibold ml-8">Find Jobs</a>
-                <a href="#" class="text-[#003759] font-semibold">Advantage</a>
-                <a href="#" class="text-[#003759] font-semibold">Articles</a>
-                <a href="#" class="text-[#003759] font-semibold">Testimonial</a>
+                <a href="{{ route('welcome') }}" class="text-[#003759] font-semibold ml-8">Find Jobs</a>
+                <a href="{{ route('welcome') }}" class="text-[#003759] font-semibold">Advantage</a>
+                <a href="{{ route('welcome') }}" class="text-[#003759] font-semibold">Articles</a>
+                <a href="{{ route('welcome') }}" class="text-[#003759] font-semibold">Testimonial</a>
             </div>
         </div>
         <div class="flex space-x-4">
