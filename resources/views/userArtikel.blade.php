@@ -5,13 +5,15 @@
     $otherArticles = $articles->except($latestArticle->id_artikel);
 @endphp
 
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KarirUB - Find Your Dream Job</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
@@ -45,8 +47,6 @@
                 </div>
             </div>
     </div>
-
-
 
     <!-- Wrapper -->
     <div class="flex justify-center">
@@ -103,12 +103,10 @@
             <img src="asset/logo/arrow_right.svg" alt="Panah Next">
         </nav>
     </div>
-</div>
+    </div>
 
 <!-- Footer -->
-<footer class="bg-gradient-to-r from-[#0076BF] to-[#003759] text-[#FFFAFA] w-full h-full flex-shrink-0 mx-auto py-12">
-    <!-- Footer Content -->
-</footer>
+@include('layouts.footer')
 
 </body>
 </html>
