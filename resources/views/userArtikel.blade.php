@@ -6,14 +6,15 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="bg-white font-[montserrat]">
 
 <!-- Navbar -->
 @include('layouts.navbar_usernondash')
 
 <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
    <!-- Kolase Card Besar -->
-<div class="w-[1248px] h-[623px] bg-[#FFFAFA] rounded-xl shadow-md overflow-hidden mb-8 ml-12 flex border border-[#B0B0B0]">
+   <div class="flex justify-center">
+<div class="w-[1248px] h-[623px] bg-[#FFFAFA] rounded-xl shadow-md overflow-hidden mb-8  flex border border-[#B0B0B0]">
     <!-- Bagian Gambar -->
     <div class="w-3/5 h-full">
         <img src="images/thumbnail_artikel1.svg" class="object-cover w-full h-full" alt="Hero Thumbnail">
@@ -38,6 +39,7 @@
         </div>
     </div>
 </div>
+</div>
 
 
     <!-- Wrapper -->
@@ -46,7 +48,7 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
     
 <!-- Card 1 -->
-    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] ">
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] transform transition-transform duration-200 hover:scale-110 ">
         <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
         <div class="p-6">
             <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
@@ -67,7 +69,7 @@
 
         <!-- Card 2 -->
     <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
-    ">
+   transform transition-transform duration-200 hover:scale-110">
         <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
         <div class="p-6">
             <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
@@ -87,7 +89,7 @@
     </div>
 
     <!-- Card 3 -->
-    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] transform transition-transform duration-200 hover:scale-110
     ">
         <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
         <div class="p-6">
@@ -107,7 +109,7 @@
         </div>
     </div>
     <!-- Card 4 -->
-    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] transform transition-transform duration-200 hover:scale-110
     ">
         <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
         <div class="p-6">
@@ -127,7 +129,7 @@
         </div>
     </div>
     <!-- Card 5 -->
-    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] transform transition-transform duration-200 hover:scale-110
     ">
         <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
         <div class="p-6">
@@ -147,7 +149,7 @@
         </div>
     </div>
     <!-- Card 6 -->
-    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] transform transition-transform duration-200 hover:scale-110
     ">
         <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
         <div class="p-6">
@@ -171,13 +173,33 @@
     <!-- Pagination -->
     <div class="flex justify-center mt-10 mb-8">
         <nav class="flex items-center space-x-2">
-            <img src="asset/logo/arrow_left.svg" alt="Panah Prev">
-            <button class="px-3 py-2 rounded-md text-sm text-[#757575] hover:bg-[#FFFAFA] font-['Montserrat']">Previous</button>
-            <button class="px-3 py-2 rounded-[10px] text-sm text-white bg-[#003759] font-['Montserrat']">1</button>
-            <button class="px-3 py-2 rounded-[10px] text-sm text-gray-700 hover:bg-[#FFFAFA] font-['Montserrat']">2</button>
-            <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">...</button>
-            <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">Next</button>
-            <img src="asset/logo/arrow_right.svg" alt="Panah Next">
+        <div class="flex items-center gap-2">
+    <img 
+        src="{{ asset('asset/icon/arrow_left.svg') }}" 
+        alt="Panah Prev" 
+        class="hover:scale-110 transition-transform duration-200">
+    
+    <button class="px-3 py-2 rounded-md text-sm text-[#757575] font-['Montserrat'] hover:scale-110 transition-transform duration-200">
+        Previous
+    </button>
+    <button class="px-3 py-2 rounded-[10px] text-sm text-white bg-[#003759] font-['Montserrat'] hover:scale-110 transition-transform duration-200">
+        1
+    </button>
+    <button class="px-3 py-2 rounded-[10px] text-sm text-gray-700 font-['Montserrat'] hover:scale-110 transition-transform duration-200">
+        2
+    </button>
+    <button class="px-3 py-2 rounded-md text-sm text-[#003759] font-['Montserrat'] hover:scale-110 transition-transform duration-200">
+        ...
+    </button>
+    <button class="px-3 py-2 rounded-md text-sm text-[#003759] font-['Montserrat'] hover:scale-110 transition-transform duration-200">
+        Next
+    </button>
+    <img 
+        src="{{ asset('asset/icon/arrow_right.svg') }}" 
+        alt="Panah Next" 
+        class="hover:scale-110 transition-transform duration-200">
+</div>
+
         </nav>
     </div>
 </div>

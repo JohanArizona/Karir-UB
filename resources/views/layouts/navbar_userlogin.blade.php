@@ -1,4 +1,4 @@
-<nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
+<nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white font-['montserrat'] text-semibold shadow max-w-full mx-auto">
     <div class="flex items-center space-x-8 mr-8">
         <img src="{{ asset('asset/logo_karirub.svg') }}" alt="KarirUB Logo" class="h-14 ml-4">
         <div class="hidden md:flex space-x-16">

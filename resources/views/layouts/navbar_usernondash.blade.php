@@ -11,26 +11,26 @@
 
     <!-- Search Bar -->
     <form action="{{ route('search.lokerLogin') }}" method="GET" class="relative max-w-[450px] w-full ml-auto mr-16">
-            <!-- Ikon search -->
-            <img 
-                src="asset/logo/search_putih.svg" 
-                alt="search" 
-                class="absolute h-6 w-6 left-4 top-1/2 transform -translate-y-1/2"
-            >
-            
             <!-- Input field -->
             <input 
                 type="text"
                 name="query"
-                placeholder="Position or Jobs"
-                class="w-full pl-14 pr-4 border text-lg h-14 border-[#B0B0B0] rounded-full focus:outline-none focus:border-[#003759] bg-[#FFFAFA]"
+                placeholder="Job title or Position"
+                class="w-full pl-10 pr-4 border text-lg h-14 border-[#B0B0B0] rounded-full focus:outline-none focus:border-[#003759] bg-[#FFFAFA]"
             >
 
             <!-- Tombol search -->
             <button 
                 class="absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2 text-white text-2xl font-semibold"
             >
-                <img src="" alt="c">
+                  <!-- Ikon search -->
+
+ <img 
+    src="{{ asset('asset/logo/search.svg') }}" 
+    alt="search" 
+    class="absolute h-6 w-6 right-4 top-1/2 transform -translate-y-1/2">
+
+            
             </button>
     </form>
     <!-- User Menu -->
