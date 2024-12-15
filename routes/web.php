@@ -23,6 +23,7 @@ Route::middleware('auth')->group(function () {
     //Search Loker Setelah Login
     Route::get('user/search', [JobController::class, 'searchLogin'])->name('search.lokerLogin');
     Route::get('/articles', [ArticleController::class, 'userArticle'])->name('userArticles');
+    Route::get('/articles/{id_artikel}/detailarticles', [ArticleController::class, 'userDetailArticle'])->name('userDetailArticles');
 });
 
 require __DIR__.'/auth.php';

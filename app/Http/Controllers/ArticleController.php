@@ -28,6 +28,18 @@ class ArticleController extends Controller
         return view('userArtikel', compact('articles'));
     }
 
+    public function userDetailArticle($id)
+    {
+        // Ambil artikel berdasarkan ID yang diklik
+        $article = ArtikelBerita::findOrFail($id);  // Mengambil artikel berdasarkan ID atau menampilkan 404 jika tidak ditemukan
+        
+        // Ambil semua artikel lainnya (selain yang diklik)
+        $articles = ArtikelBerita::where('id_artikel', '!=', $id)->latest()->get();
+
+        // Kirim data artikel ke view
+        return view('detail_artikel', compact('article', 'articles'));
+    }    
+
     public function adminArticle()
     {
         // Ambil artikel terbaru (bisa diubah sesuai kebutuhan)
