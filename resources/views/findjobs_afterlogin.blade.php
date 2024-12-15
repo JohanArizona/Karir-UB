@@ -14,7 +14,7 @@
     @include('layouts.navbar_usernondash')
     
     <!-- Job Listings Grid -->
-    <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
+    <div class="pt-10 pl-8 pr-8 max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
         @forelse($jobs as $job)
             <div class="bg-[#FFFAFA] rounded-3xl shadow-lg p-8">
                 <div class="flex items-start space-x-6">
@@ -61,9 +61,10 @@
                         <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors">
                             <img src="asset/logo/bookmark_gray.svg" alt="Bookmark Logo">
                         </button>
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px]">
-                            Lamar
-                        </button>
+                        <a href="https://api.whatsapp.com/send/?phone={{ urlencode($job['contact']) }}&text=Halo,+saya+ingin+melamar+untuk+{{ urlencode($job['title']) }}+di+{{ urlencode($job['company']) }}."
+                        class="bg-[#009DFF] hover:bg-[#0076BF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px] text-center block">
+                        Apply
+                        </a>
                     </div>
                 </div>
 

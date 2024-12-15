@@ -211,7 +211,7 @@
   </div>
 
   <!-- FAQ Section -->
-  <h2 class="text-[#003759] text-4xl font-[Montserrat] mt-12 font-semibold text-center">FAQ</h2>
+  <h2 class="text-[#003759] text-4xl font-[Montserrat] mt-12 font-semibold text-center pb-8">FAQ</h2>
   <div class="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
     <div class="w-2/4 space-y-4">
       <div class="space-y-2">

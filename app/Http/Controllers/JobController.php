@@ -258,6 +258,7 @@ class JobController extends Controller
                     'posted_at' => $loker->created_at,
                     'salary' => $loker->gaji,
                     'description' => $loker->deskripsi,
+                    'contact' => $loker->no_telp_perusahaan,
                     // Tambahkan field lain sesuai kebutuhan
                 ];
             });

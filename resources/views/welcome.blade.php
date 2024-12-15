@@ -10,10 +10,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white font-[Montserrat]">
-    @include('layouts.navigation')
+<style>
+    html {
+        scroll-behavior: smooth;
+    }
+
+    #find-jobs, #advantage, #articles, #testimonial {
+    scroll-margin-top: 80px; 
+    }
+
+
+
+</style>
+
+    <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
+        <div class="flex items-center space-x-8">
+            <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
+            <div class="hidden md:flex space-x-20">
+                <a href="#find-jobs" class="text-[#003759] font-semibold ml-8">Find Jobs</a>
+                <a href="#advantage" class="text-[#003759] font-semibold">Advantage</a>
+                <a href="#articles" class="text-[#003759] font-semibold">Articles</a>
+                <a href="#testimonials" class="text-[#003759] font-semibold">Testimonial</a>
+            </div>
+        </div>
+        <div class="flex space-x-4">
+            <a href="{{ route('login') }}" class="font-semibold px-12 py-2 text-[#003759] rounded-full border-2 border-[#003759]">Login</a>
+            <a href="{{ route('register.showStep1') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full">Register</a>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <div class=" bg-[#e6e6e6]/50 h-[90vh] max-w-full mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
+    <div id="find-jobs" class=" bg-[#e6e6e6]/50 h-[90vh] max-w-full mx-auto px-4 grid md:grid-cols-2 gap-8 items-center">
         <div class="ml-8">
             <h1 class="text-5xl font-bold mb-4">
                 Find Your Dream Job <br> With<span class="text-[#005E99]"> KarirUB</span>
@@ -40,7 +67,7 @@
 
 
     <!-- Features -->
-    <div class="py-16">
+    <div id="advantage" class="py-16">
         <div class="max-w-7xl mx-auto px-4">
             <h2 class="text-center text-4xl text-[#003759] font-semibold mb-2">Why Choose Us?</h2>
             <p class="text-center text-xl text-gray-600 mb-12 font-semibold">A process that makes the difference</p>
@@ -94,7 +121,7 @@
     </div>
 
 <!-- Articles Section --> 
-<section class="bg-[#003759] text-white py-12">
+<section id="articles" class="bg-[#003759] text-white py-12">
     <div class="w-full max-w-screen-3xl mx-auto px-4">
         <h2 class="text-4xl font-semibold mb-0 text-center">Check Out Our Articles</h2>
         <p class="text-xl font-semibold mb-8 text-center">Get to know our newest update</p>
@@ -117,7 +144,7 @@
 
 
     <!-- Testimonials Section -->
-    <section class="py-12">
+    <section id="testimonials" class="py-12">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-semibold mb-8 text-center text-[#003759]">What Alumni Say?</h2>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">

@@ -20,7 +20,7 @@
         <h1 class="text-3xl font-bold text-[#003759] font-[montserrat] ">Uploaded Jobs</h1>
     </div>
         <!-- Bagian Card Loker -->
-        <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
+        <div class="pl-8 pr-8 pt-4 max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
         @forelse($lokers as $loker)
             <div class="bg-white rounded-3xl shadow-lg p-8">
                 <div class="flex items-start space-x-6">

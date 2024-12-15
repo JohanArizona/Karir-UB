@@ -9,32 +9,33 @@
         </div>
     </div>
 
-    <!-- User Menu -->
-    <div class="flex items-center space-x-10 mr-8">
-        <!-- Search Bar -->
-        <form action="{{ route('search.lokerLogin') }}" method="GET" class="relative max-w-[650px] w-full">
-              <!-- Ikon search -->
-              <img 
-                  src="asset/logo/search_putih.svg" 
-                  alt="search" 
-                  class="absolute h-6 w-6 left-4 top-1/2 transform -translate-y-1/2"
-              >
-              
-              <!-- Input field -->
-              <input 
-                  type="text"
-                  name="query"
-                  placeholder="Position or Jobs"
-                  class="w-full pl-14 pr-4 py-4 border text-lg h-20 border-[#B0B0B0] rounded-full focus:outline-none focus:border-[#003759] bg-[#FFFAFA]"
-              >
+    <!-- Search Bar -->
+    <form action="{{ route('search.lokerLogin') }}" method="GET" class="relative max-w-[450px] w-full ml-auto mr-16">
+            <!-- Ikon search -->
+            <img 
+                src="asset/logo/search_putih.svg" 
+                alt="search" 
+                class="absolute h-6 w-6 left-4 top-1/2 transform -translate-y-1/2"
+            >
+            
+            <!-- Input field -->
+            <input 
+                type="text"
+                name="query"
+                placeholder="Position or Jobs"
+                class="w-full pl-14 pr-4 border text-lg h-14 border-[#B0B0B0] rounded-full focus:outline-none focus:border-[#003759] bg-[#FFFAFA]"
+            >
 
-              <!-- Tombol search -->
-              <button 
-                  class="absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2 text-white text-2xl font-semibold"
-              >
-                  <img src="" alt="c">
-              </button>
-          </form>
+            <!-- Tombol search -->
+            <button 
+                class="absolute right-0 top-1/2 transform -translate-y-1/2 px-4 py-2 text-white text-2xl font-semibold"
+            >
+                <img src="" alt="c">
+            </button>
+    </form>
+    <!-- User Menu -->
+
+    <div class="flex items-center space-x-10 mr-8">
 
         <!-- Menampilkan inisial atau nama pengguna -->
         <a href="{{ route('profile') }}" class="h-14 w-14 rounded-full bg-[#003759] text-white flex items-center justify-center text-lg">
