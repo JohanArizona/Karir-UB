@@ -55,8 +55,9 @@
     @include('layouts.navbar_admin')
 
     <!-- Background Profile -->
-    <div class="absolute w-full -z-10 top-[-160px]">
-        <img src="images/assets/background_create_job.svg" alt="Background" class="w-full h-auto">
+    <div class="absolute w-full -z-10 top-[-200px]">
+    <img src="{{ asset('asset/background_create_job.svg') }}" alt="Background" class="w-full h-auto">
+
     </div>
 
     <!-- Form Section -->
@@ -104,9 +105,12 @@
          class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
          onclick="document.getElementById('cover_image').click()">
         <div id="placeholder" class="flex flex-col items-center space-y-2">
-            <img src="asset/upload_icon.svg" alt="Upload Icon" class="w-8 h-8">
+            <img src="{{ asset('asset/icon/upload.svg') }}" alt="Upload Icon" class="w-8 h-8">
             <span class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
             <span class="text-xs text-gray-400">Max 10 MB files are allowed</span>
+            <div id="preview-container" class="flex flex-col items-center mt-4">
+                            <!-- Preview image will be inserted here -->
+                        </div>
         </div>
     </div>
 </div>

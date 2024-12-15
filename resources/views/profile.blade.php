@@ -5,10 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profile - KarirUB</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white">
     <!-- Navbar -->
     @include('layouts.navbar_userlogin')
+
+    <div class="absolute w-full z-[-3] flex justify-center items-center">
+    <img src="{{ asset('asset/background_profile.svg') }}" alt="Background Profile" class="w-full max-w-full h-auto max-w-none">
+
+    </div>
 
     <!-- Profile Section -->
     <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 mt-64 mb-16">

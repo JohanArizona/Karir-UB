@@ -5,7 +5,7 @@
     $otherArticles = $articles->except($latestArticle->id_artikel);
 @endphp
 
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -17,8 +17,8 @@
 </head>
 <body>
 
-    <!-- Navbar -->
-    @include('layouts.navbar_usernondash')
+<!-- Navbar -->
+@include('layouts.navbar_usernondash')
 
     <div class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
     <!-- Kolase Card Besar -->
@@ -48,48 +48,135 @@
             </div>
     </div>
 
+
+
     <!-- Wrapper -->
-    <div class="flex justify-center">
-        <!-- Grid Container -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<div class="flex justify-center">
+    <!-- Grid Container -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    
+<!-- Card 1 -->
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0] ">
+        <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
+        <div class="p-6">
+            <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
+            <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
+            <div class="mt-2 mb-12 w-[352px] h-[68px] text-justify text-neutral-800 text-md font-medium font-['Montserrat']">Since its launch, KarirUB has boosted the job placement rate for UB alumni by 30%. Key features, such as job filtering based on qualifications and...</div>
+            <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
+                <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
+                Sabtu, 16 November 2024 21:25 WIB
+            </div>
             
-            <!-- Card artikel -->
-            @foreach($otherArticles as $article)
-                <!-- Card 1 -->
-                <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border-[#B0B0B0]">
-                    <!-- Gambar Thumbnail -->
-                    <img src="{{ asset('storage/' . $article->gambar) }}" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
-                    
-                    <div class="p-6">
-                        <!-- Judul Artikel -->
-                        <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">{{ $article->judul }}</div>
-                        
-                        <!-- Sumber Artikel -->
-                        <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
-                        
-                        <!-- Deskripsi Artikel -->
-                        <div class="mt-2 mb-12 w-[352px] h-[68px] break-words text-justify text-md font-medium font-['Montserrat'] overflow-hidden text-ellipsis line-clamp-3">
-                            {{ Str::limit($article->deskripsi, 100) }} <!-- Mengambil 100 karakter pertama -->
-                        </div>
-                        
-                        <!-- Tanggal Posting -->
-                        <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
-                            <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
-                            {{ \Carbon\Carbon::parse($article->tgl_post)->format('l, d M Y H:i') . ' WIB' }}
-                        </div>
-                        
-                        <!-- Tombol Baca Artikel -->
-                        <div class="flex justify-between items-center">
-                            <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
-                                Read Article
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
-            
+            <div class="flex justify-between items-center">
+                <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
+                    Read Article
+                </button>
+            </div>
         </div>
     </div>
+
+        <!-- Card 2 -->
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    ">
+        <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
+        <div class="p-6">
+            <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
+            <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
+            <div class="mt-2 mb-12 w-[352px] h-[68px] text-justify text-neutral-800 text-md font-medium font-['Montserrat']">Since its launch, KarirUB has boosted the job placement rate for UB alumni by 30%. Key features, such as job filtering based on qualifications and...</div>
+            <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
+                <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
+                Sabtu, 16 November 2024 21:25 WIB
+            </div>
+            
+            <div class="flex justify-between items-center">
+                <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
+                    Read Article
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    ">
+        <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
+        <div class="p-6">
+            <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
+            <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
+            <div class="mt-2 mb-12 w-[352px] h-[68px] text-justify text-neutral-800 text-md font-medium font-['Montserrat']">Since its launch, KarirUB has boosted the job placement rate for UB alumni by 30%. Key features, such as job filtering based on qualifications and...</div>
+            <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
+                <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
+                Sabtu, 16 November 2024 21:25 WIB
+            </div>
+            
+            <div class="flex justify-between items-center">
+                <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
+                    Read Article
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Card 4 -->
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    ">
+        <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
+        <div class="p-6">
+            <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
+            <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
+            <div class="mt-2 mb-12 w-[352px] h-[68px] text-justify text-neutral-800 text-md font-medium font-['Montserrat']">Since its launch, KarirUB has boosted the job placement rate for UB alumni by 30%. Key features, such as job filtering based on qualifications and...</div>
+            <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
+                <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
+                Sabtu, 16 November 2024 21:25 WIB
+            </div>
+            
+            <div class="flex justify-between items-center">
+                <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
+                    Read Article
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Card 5 -->
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    ">
+        <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
+        <div class="p-6">
+            <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
+            <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
+            <div class="mt-2 mb-12 w-[352px] h-[68px] text-justify text-neutral-800 text-md font-medium font-['Montserrat']">Since its launch, KarirUB has boosted the job placement rate for UB alumni by 30%. Key features, such as job filtering based on qualifications and...</div>
+            <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
+                <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
+                Sabtu, 16 November 2024 21:25 WIB
+            </div>
+            
+            <div class="flex justify-between items-center">
+                <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
+                    Read Article
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Card 6 -->
+    <div class="w-[400px] h-[670px] bg-[#fffafa] rounded-xl shadow-md overflow-hidden border border-gray-200 border border-[#B0B0B0]
+    ">
+        <img src="images/thumbnail_artikel1.svg" class="w-[438px] h-[270px] object-cover" alt="Thumbnail">
+        <div class="p-6">
+            <div class="mb-2 text-neutral-800 text-[32px] font-semibold font-['Montserrat']">The Advantages of KarirUB: UB Alumni...</div>
+            <span class="text-[#003759] text-base font-semibold font-['Montserrat']">KarirUB</span>
+            <div class="mt-2 mb-12 w-[352px] h-[68px] text-justify text-neutral-800 text-md font-medium font-['Montserrat']">Since its launch, KarirUB has boosted the job placement rate for UB alumni by 30%. Key features, such as job filtering based on qualifications and...</div>
+            <div class="flex items-center text-[#8c8c8c] text-sm font-semibold font-['Montserrat'] mb-4">
+                <img src="asset/icon/kalender_abu.svg" class="w-4 h-4 mr-2" alt="Kalender">
+                Sabtu, 16 November 2024 21:25 WIB
+            </div>
+            <div class="flex justify-between items-center">
+                <button class="w-[355px] h-[57px] rounded-[10px] border border-black text-black text-base font-bold font-['Montserrat']">
+                    Read Article
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
 
     <!-- Pagination -->
     <div class="flex justify-center mt-10 mb-8">

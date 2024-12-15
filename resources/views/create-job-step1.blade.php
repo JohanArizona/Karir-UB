@@ -61,6 +61,7 @@
                          class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-[350px]">
                         <input type="file" id="logo" name="logo" accept="image/*" required class="hidden" onchange="handleFileSelect(event)">
                         <label id="placeholder-text" for="logo" class="text-gray-500 text-center cursor-pointer">
+                        <img src="{{ asset('asset/icon/upload.svg') }}" alt="Upload Icon" class="w-8 h-8 ml-24">
                             Drag your file(s) or <span class="text-[#009DFF] underline">browse</span><br>
                             Max 10 MB files are allowed
                         </label>
