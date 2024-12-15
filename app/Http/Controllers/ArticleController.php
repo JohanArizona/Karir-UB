@@ -22,7 +22,7 @@ class ArticleController extends Controller
     public function userArticle()
     {
         // Ambil artikel terbaru (bisa diubah sesuai kebutuhan)
-        $articles = ArtikelBerita::latest()->take(5)->get();
+        $articles = ArtikelBerita::latest()->get();
     
         // Kirim data artikel ke view
         return view('userArtikel', compact('articles'));
