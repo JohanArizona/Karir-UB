@@ -51,7 +51,7 @@
         <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
         @if(count($lokers) != 0)
             @foreach($lokers as $loker)
-            <div class="bg-white rounded-3xl shadow-lg p-8">
+            <div class="bg-[#FFFAFA] rounded-3xl shadow-lg p-8 transform transition-transform duration-200 hover:scale-105">
                 <div class="flex items-start space-x-6">
                     <!-- Company Logo -->
                     <div class="flex-shrink-0">
