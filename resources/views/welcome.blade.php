@@ -10,18 +10,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body class="bg-white font-[Montserrat]">
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
 
-    #find-jobs, #advantage, #articles, #testimonial {
-    scroll-margin-top: 80px; 
-    }
-
-
-
-</style>
+        #find-jobs, #advantage, #articles, #testimonial {
+        scroll-margin-top: 80px; 
+        }
+    </style>
 
     <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
         <div class="flex items-center space-x-8">
