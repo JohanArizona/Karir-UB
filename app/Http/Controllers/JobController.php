@@ -46,6 +46,13 @@ class JobController extends Controller
         return view('detail_job', compact('jobs'));
     } 
 
+    public function guestDetailJob($id)
+    {
+        $jobs = Loker::findOrFail($id);  
+
+        return view('guest_detail_job', compact('jobs'));
+    } 
+
     //Hapus Loker Dari Dashboard
     public function destroy($id_loker)
     {
@@ -228,6 +235,7 @@ class JobController extends Controller
             ->get()
             ->map(function($loker) {
                 return [
+                    'id_loker' => $loker->id_loker,
                     'title' => $loker->nama_loker,
                     'company' => $loker->nama_perusahaan,
                     'company_logo' => $loker->logo_company,
@@ -236,6 +244,7 @@ class JobController extends Controller
                     'posted_at' => $loker->created_at,
                     'salary' => $loker->gaji,
                     'description' => $loker->deskripsi,
+                    'contact' => $loker->no_telp_perusahaan,
                     // Tambahkan field lain sesuai kebutuhan
                 ];
             });

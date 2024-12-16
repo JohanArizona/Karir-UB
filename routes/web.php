@@ -11,7 +11,8 @@ Route::get('/', function () {
 });
 
 Route::get('/', [ArticleController::class, 'welcome'])->name('welcome');
-Route::get('/detailarticles/{id_artikel}', [ArticleController::class, 'guestDetailArticle'])->name('guestDetailArticles');
+Route::get('/detailarticle/{id_artikel}', [ArticleController::class, 'guestDetailArticle'])->name('guestDetailArticles');
+Route::get('/detailjob/{id_loker}', [JobController::class, 'guestDetailJob'])->name('guestDetailJob');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
