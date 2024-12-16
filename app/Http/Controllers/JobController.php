@@ -39,6 +39,13 @@ class JobController extends Controller
         return view('adminJob', compact('lokers'));
     }
 
+    public function userDetailJob($id)
+    {
+        $jobs = Loker::findOrFail($id);  
+
+        return view('detail_job', compact('jobs'));
+    } 
+
     //Hapus Loker Dari Dashboard
     public function destroy($id_loker)
     {
@@ -250,6 +257,7 @@ class JobController extends Controller
             ->get()
             ->map(function($loker) {
                 return [
+                    'id_loker' => $loker->id_loker,
                     'title' => $loker->nama_loker,
                     'company' => $loker->nama_perusahaan,
                     'company_logo' => $loker->logo_company,

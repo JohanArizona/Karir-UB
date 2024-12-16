@@ -22,9 +22,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
     Route::get('/dashboard', [JobController::class, 'dashboardUser'])->name('dashboard');
     //Search Loker Setelah Login
-    Route::get('user/search', [JobController::class, 'searchLogin'])->name('search.lokerLogin');
+    Route::get('user/jobs', [JobController::class, 'searchLogin'])->name('search.lokerLogin');
     Route::get('/articles', [ArticleController::class, 'userArticle'])->name('userArticles');
     Route::get('/articles/{id_artikel}/detailarticles', [ArticleController::class, 'userDetailArticle'])->name('userDetailArticles');
+    Route::get('/jobs/{id_loker}/detailjob', [JobController::class, 'userDetailJob'])->name('userDetailJob');
 });
 
 require __DIR__.'/auth.php';
