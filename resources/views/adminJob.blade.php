@@ -22,7 +22,7 @@
         <!-- Bagian Card Loker -->
         <div class="pl-8 pr-8 pt-4 max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
         @forelse($lokers as $loker)
-            <div class="bg-white rounded-3xl shadow-lg p-8">
+            <div class="bg-[#FFFAFA] rounded-3xl shadow-lg p-8">
                 <div class="flex items-start space-x-6">
                     <!-- Company Logo -->
                     <div class="flex-shrink-0">
@@ -93,19 +93,26 @@
         </div>
 
     
-        <!-- Pagination -->
-        <div class="flex justify-center mt-8">
-            <nav class="flex items-center space-x-2">
-                <img src="asset/logo/arrow_left.svg" alt="Panah Prev">
-                <button class="px-3 py-2 rounded-md text-sm text-[#757575] hover:bg-[#FFFAFA] font-['Montserrat']">Previous</button>
-                <button class="px-3 py-2 rounded-[10px] text-sm text-white bg-[#003759] font-['Montserrat']">1</button>
-                <button class="px-3 py-2 rounded-[10px] text-sm text-gray-700 hover:bg-[#FFFAFA] font-['Montserrat']">2</button>
-                <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">...</button>
-                <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">Next</button>
-                <img src="asset/logo/arrow_right.svg" alt="Panah Next">
-            </nav>
-        </div>
+       <!-- Pagination -->
+    <div class="flex justify-center mt-10 mb-8">
+        <nav class="flex items-center space-x-2">
+        <img 
+        src="{{ asset('asset/icon/arrow_left.svg') }}" 
+        alt="Panah Prev" 
+        class="hover:scale-110 transition-transform duration-200">
+            <button class="px-3 py-2 rounded-md text-sm text-[#757575] hover:bg-[#FFFAFA] font-['Montserrat']">Previous</button>
+            <button class="px-3 py-2 rounded-[10px] text-sm text-white bg-[#003759] font-['Montserrat']">1</button>
+            <button class="px-3 py-2 rounded-[10px] text-sm text-gray-700 hover:bg-[#FFFAFA] font-['Montserrat']">2</button>
+            <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">...</button>
+            <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">Next</button>
+            <img 
+        src="{{ asset('asset/icon/arrow_right.svg') }}" 
+        alt="Panah Next" 
+        class="hover:scale-110 transition-transform duration-200">
+        </nav>
     </div>
+    </div>
+
 
     <!-- Footer -->
     @include('layouts.footer_admin')

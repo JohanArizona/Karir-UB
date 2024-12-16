@@ -51,7 +51,7 @@
         <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-20">
         @if(count($lokers) != 0)
             @foreach($lokers as $loker)
-            <div class="bg-[#FFFAFA] rounded-3xl shadow-lg p-8 transform transition-transform duration-200 hover:scale-105">
+            <div class="bg-[#FFFAFA] rounded-3xl shadow-lg p-8">
                 <div class="flex items-start space-x-6">
                     <!-- Company Logo -->
                     <div class="flex-shrink-0">
@@ -151,7 +151,7 @@
             @if(count($articles) != 0)
                 @foreach($articles as $article)
                     <!-- Article Card -->
-                    <div class="bg-white rounded-lg shadow">
+                    <div class="bg-[#FFFAFA] rounded-lg shadow">
                         <div class="flex">
                             <img src="{{ asset('storage/' . $article->gambar) }}" alt="Article thumbnail" class="w-[325px] h-[190px] rounded-[5px] object-cover">
                             <div class="p-4 flex-1">
