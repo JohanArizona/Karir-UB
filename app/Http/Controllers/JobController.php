@@ -128,7 +128,7 @@ class JobController extends Controller
         // Simpan perubahan
         $loker->save();
     
-        return redirect()->route('admin.loker.edit', $id_loker)->with('success', 'Lowongan Kerja berhasil diperbarui.');
+        return redirect()->route('admin.loker.edit', $id_loker)->with('success', 'The job vacancy has been successfully updated');
     }
     
     

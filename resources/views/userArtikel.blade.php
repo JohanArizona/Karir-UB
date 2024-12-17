@@ -98,13 +98,19 @@
     <!-- Pagination -->
     <div class="flex justify-center mt-10 mb-8">
         <nav class="flex items-center space-x-2">
-            <img src="asset/logo/arrow_left.svg" alt="Panah Prev">
+        <img 
+        src="{{ asset('asset/icon/arrow_left.svg') }}" 
+        alt="Panah Prev" 
+        class="hover:scale-110 transition-transform duration-200">
             <button class="px-3 py-2 rounded-md text-sm text-[#757575] hover:bg-[#FFFAFA] font-['Montserrat']">Previous</button>
             <button class="px-3 py-2 rounded-[10px] text-sm text-white bg-[#003759] font-['Montserrat']">1</button>
             <button class="px-3 py-2 rounded-[10px] text-sm text-gray-700 hover:bg-[#FFFAFA] font-['Montserrat']">2</button>
             <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">...</button>
             <button class="px-3 py-2 rounded-md text-sm text-[#003759] hover:bg-[#FFFAFA] font-['Montserrat']">Next</button>
-            <img src="asset/logo/arrow_right.svg" alt="Panah Next">
+            <img 
+        src="{{ asset('asset/icon/arrow_right.svg') }}" 
+        alt="Panah Next" 
+        class="hover:scale-110 transition-transform duration-200">
         </nav>
     </div>
     </div>
