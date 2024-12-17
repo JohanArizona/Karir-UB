@@ -111,7 +111,7 @@
 
         if (answer.style.maxHeight === '0px' || answer.style.maxHeight === '') {
           answer.style.maxHeight = '200px';  // Ganti dengan nilai max-height yang sesuai
-          answer.style.paddingTop = '10px';
+          answer.style.paddingTop = '15px';
           answer.style.paddingBottom = '10px';
           icon.style.transform = 'rotate(180deg)';
         } else {
@@ -130,6 +130,7 @@
     <div class="max-w-none mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         @foreach ($jobs as $job)
         <div class="bg-[#FFFAFA] rounded-3xl shadow-md p-8 border transform transition-transform duration-200 hover:scale-105">
+        <a href="{{ route('userDetailJob', $job['id_loker']) }}" class="absolute inset-0 z-20"></a>
             <div class="flex items-start space-x-6">
                 <div class="flex-shrink-0">
                     <img src="{{ asset('storage/' . $job->logo_company) }}" alt="Company Logo" class="w-32 h-32 rounded-2xl shadow-md">
@@ -161,11 +162,11 @@
                     <p class="text-[#009dff] text-xl font-semibold mt-2">Rp {{ number_format($job->gaji, 0, ',', '.') }}</p>
                 </div>
                 <div class="flex space-x-2">
-                    <button class="bg-[#009DFF] hover:bg-[#0076BF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
+                    <button class="z-20 bg-[#009DFF] hover:bg-[#0076BF] text-[#e6e6e6] px-2 py-2 rounded-[40px] text-sm font-semibold transition-colors">
                         <img src="asset/logo/logo_bookmark.svg" alt="Bookmark Logo" class="w-6 h-auto">
                     </button>
                     <a href="https://api.whatsapp.com/send/?phone={{ urlencode($job->no_telp_perusahaan) }}&text=Halo,+saya+ingin+melamar+untuk+{{ urlencode($job->nama_loker) }}+di+{{ urlencode($job->nama_perusahaan) }}."
-                        class="bg-[#009DFF] hover:bg-[#0076BF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px] text-center block">
+                        class="z-20 bg-[#009DFF] hover:bg-[#0076BF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-sm font-semibold transition-colors w-[83.18px] text-center block">
                         Apply
                     </a>
                 </div>

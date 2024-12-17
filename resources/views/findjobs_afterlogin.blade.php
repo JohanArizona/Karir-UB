@@ -21,7 +21,7 @@
                 <div class="flex items-start space-x-6">
                     <!-- Company Logo -->
                     <div class="flex-shrink-0">
-                        <img src="{{ $job['company_logo'] }}" alt="{{ $job['company'] }} Logo" class="w-32 h-32 rounded-2xl shadow-md">
+                        <img src="{{ asset('storage/' . $job['company_logo']) }}" alt="{{ $job['company'] }} Logo" class="w-32 h-32 rounded-2xl shadow-md">
                     </div>
 
                     <!-- Job Details -->

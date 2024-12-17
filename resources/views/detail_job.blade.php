@@ -24,7 +24,7 @@
             <!-- Header Section -->
             <div class="flex items-start justify-between mb-6">
                 <div class="flex gap-4">
-                    <img src="{{ asset('storage/' . $jobs->logo_company) }}" alt="Company Logo" class="w-[209px] h-[209px]">
+                    <img src="{{ asset('storage/' . $jobs->logo_company) }}" alt="Company Logo" class="w-[209px] h-[209px] rounded-lg">
                     <div>
                         <h1 class="pt-12 pl-2 text-[#003759] text-2xl font-bold font-['Montserrat'] leading-[33.60px]">
                             {{ $jobs->nama_loker }}
@@ -53,12 +53,12 @@
                     </div>
                 </div>
                 <div class="flex gap-3">
-                    <button class="bg-[#fffafa] hover:bg-[#fffafa] text-[#e6e6e6] px-4 py-1 rounded-[40px] text-sm font-semibold transition-colors mt-20">
-                        <img src="{{ asset('asset/icon/bookmark_blue.svg') }}" alt="Bookmark Logo">
+                    <button class="bg-[#fffafa] text-[#e6e6e6] px-4 py-1 rounded-[40px] text-sm font-semibold transition-colors mt-20">
+                        <img src="{{ asset('asset/icon/bookmark_blue.svg') }}" alt="Bookmark Logo" class="hover:scale-110 transition-all">
                     </button>
                     <a href="https://api.whatsapp.com/send/?phone={{ urlencode($jobs->no_telp_perusahaan) }}&text=Halo,+saya+ingin+melamar+untuk+{{ urlencode($jobs->nama_loker) }}+di+{{ urlencode($jobs->nama_perusahaan) }}.">
-                        <button class="bg-[#009DFF] hover:bg-[#009DFF] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-md font-semibold transition-colors w-[140px] h-[50px] mr-8 mt-20">
-                        Apply Now
+                        <button class="bg-[#009DFF] hover:bg-[#074A73] text-[#e6e6e6] px-4 py-2 rounded-[40px] text-md font-semibold transition-colors w-[140px] h-[50px] mr-8 mt-20">
+                            Apply Now
                         </button>
                     </a>
                 </div>
@@ -69,15 +69,15 @@
                 <div class="flex items-center gap-2 p-4 w-[480px] h-[56px] rounded-[40px] border-2 border-[#003759] font-['Montserrat'] text-[#003759] font-semibold">
                     <img src="{{ asset('asset/logo/toga_biru.svg') }}" alt="Degree Icon" class="w-6 h-6">
                     @if($jobs->jenjang_minimum == 'D3')
-                        <span>Diploma 3 Minimum</span>
+                        <span>Minimum Diploma 3</span>
                     @elseif($jobs->jenjang_minimum == 'D4')
-                        <span>Diploma 4 Minimum</span>
+                        <span>Minimum Diploma 4</span>
                     @elseif($jobs->jenjang_minimum == 'S1')
-                        <span>Bachelor's Degree Minimum</span>
+                        <span>Minimum Bachelor's Degree</span>
                     @elseif($jobs->jenjang_minimum == 'S2')
-                        <span>Master's Degree Minimum</span>
+                        <span>Minimum Master's Degree</span>
                     @elseif($jobs->jenjang_minimum == 'S3')
-                        <span>Doctoral Degree Minimum</span>
+                        <span>Minimum Doctoral Degree</span>
                     @else
                         <span>{{ $jobs->jenjang_minimum }}</span>
                     @endif
@@ -91,7 +91,7 @@
                     <span>Minimum {{ $jobs->maksimal_usia }} Years Old</span>
                 </div>
                 <div class="flex items-center gap-2 p-4 w-[480px] h-[56px] rounded-[40px] border-2 border-[#003759] font-['Montserrat'] text-[#003759] font-semibold">
-                    <img src="{{ asset('asset/icon/koper.svg') }}" alt="Fulltime Icon" class="w-6 h-6">
+                    <img src="{{ asset('asset/logo/koper.svg') }}" alt="Fulltime Icon" class="w-6 h-6">
                     <span>{{ $jobs->workshift }}</span>
                 </div>
             </div>
