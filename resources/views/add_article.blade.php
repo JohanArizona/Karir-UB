@@ -101,7 +101,7 @@
                     <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
                     <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden" required onchange="handleFilePreview(event)">
                     <div id="preview-container"
-                        class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
+                        class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-48 space-y-2 cursor-pointer"
                         onclick="document.getElementById('cover_image').click()">
                         <div id="placeholder" class="flex flex-col items-center space-y-2">
                             <img src="{{ asset('asset/icon/upload.svg') }}" alt="Upload Icon" class="w-8 h-8">
@@ -113,9 +113,6 @@
                         </div>
                     </div>
                 </div>
-
-
-
 
                 <!-- Submit Button -->
                 <div class="flex justify-end">
