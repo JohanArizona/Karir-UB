@@ -84,12 +84,12 @@
         </button>
       </form>
       <p class="mt-4 ml-20 text-[20px]">
-        Already have an account? <a href="#" class="text-[#003759] font-semibold font-montserrat">Login</a>
+        Already have an account? <a href="{{ route('login') }}" class="text-[#003759] font-semibold font-montserrat">Login</a>
       </p>
     </div>
     <!-- Bagian kanan -->
     <div class="w-1/2 bg-blue-100 flex flex-col items-center justify-center">
-      <img src="images/assets/logoutama.svg" alt="KarirUB Logo" class="h-[195px] w-[218px]">
+      <img src="{{ asset('asset/logo_karirub.svg')}}" alt="KarirUB Logo" class="h-[195px] w-[218px]">
       <div class="text-[#003759] text-4xl font-montserrat leading-[46.8px] font-bold">
         Jobseeker
       </div>

@@ -10,6 +10,7 @@ use Illuminate\Notifications\Notifiable;
 class JenjangPendidikan extends Model
 {
     protected $table = 'jenjang_pendidikan';
+    protected $primaryKey = 'id_jenjang_pendidikan';
     
     protected $fillable = [
         'id_user', 'fakultas', 'program_studi', 'tahun_lulus',

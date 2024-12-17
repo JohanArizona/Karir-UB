@@ -10,7 +10,7 @@
   <body class="h-screen bg-white font-[montserrat]">
   <div class="relative h-full">
     <!-- Tombol Previous -->
-    <a href="#" class="absolute top-12 left-12 text-[#003759] text-[18px] font-semibold font-montserrat">&larr; Previous</a>
+    <a href="{{ route('register.showStep1') }}" class="absolute top-12 left-12 text-[#003759] text-[18px] font-semibold font-montserrat">&larr; Previous</a>
     <div class="flex h-full">
       <!-- Bagian kiri -->
       <div class="w-1/2 bg-[#FFFAFA] flex flex-col justify-center px-16 pl-32 custom-shadow">
@@ -91,7 +91,7 @@
       </div>
       <!-- Bagian kanan -->
       <div class="w-1/2 bg-blue-100 flex flex-col items-center justify-center">
-        <img src="images/assets/logoutama.svg" alt="KarirUB Logo" class="h-[195px] w-[218px]">
+        <img src="{{ asset('asset/logo_karirub.svg')}}" alt="KarirUB Logo" class="h-[195px] w-[218px]">
         <div class="text-[#003759] text-4xl font-montserrat leading-[46.8px] font-bold">
           Jobseeker
         </div>

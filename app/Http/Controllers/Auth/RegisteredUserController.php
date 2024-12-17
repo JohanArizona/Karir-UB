@@ -82,6 +82,6 @@ class RegisteredUserController extends Controller
         // Hapus data dari session
         $request->session()->forget(['register', 'register_password']);
     
-        return redirect()->route('register.showStep2')->with('success', 'Registration completed successfully.');
+        return redirect()->route('login')->with('success', 'Registration completed successfully.');
     }
 }

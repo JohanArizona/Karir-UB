@@ -24,15 +24,15 @@
         <div class="flex items-center space-x-8">
             <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
             <div class="hidden md:flex space-x-20">
-                <a href="#find-jobs" class="text-[#003759] font-semibold ml-8">Find Jobs</a>
-                <a href="#advantage" class="text-[#003759] font-semibold">Advantage</a>
-                <a href="#articles" class="text-[#003759] font-semibold">Articles</a>
-                <a href="#testimonials" class="text-[#003759] font-semibold">Testimonial</a>
+                <a href="#find-jobs" class="text-[#003759] font-semibold ml-8 transition-all duration-200 ease-in-out hover:text-[#0081CE]">Find Jobs</a>
+                <a href="#advantage" class="text-[#003759] font-semibold transition-all duration-200 ease-in-out hover:text-[#0081CE]">Advantage</a>
+                <a href="#articles" class="text-[#003759] font-semibold transition-all duration-200 ease-in-out hover:text-[#0081CE]">Articles</a>
+                <a href="#testimonials" class="text-[#003759] font-semibold transition-all duration-200 ease-in-out hover:text-[#0081CE]">Testimonial</a>
             </div>
         </div>
         <div class="flex space-x-4">
             <a href="{{ route('login') }}" class="font-semibold px-12 py-2 text-[#003759] rounded-full border-2 border-[#003759]">Login</a>
-            <a href="{{ route('register.showStep1') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full">Register</a>
+            <a href="{{ route('register.showStep1') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full flex items-center justify-center">Register</a>
         </div>
     </nav>
 
