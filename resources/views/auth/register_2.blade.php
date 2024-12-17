@@ -84,7 +84,7 @@
             />
           </div>
           <!-- Sign Up Button -->
-          <button type="submit" class=" w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full hover:bg-[#003759]">
+          <button type="submit" class=" w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full transition-all duration-300 ease-in-out hover:bg-[#005E99]">
             Sign Up
           </button>
         </form>

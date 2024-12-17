@@ -51,12 +51,12 @@
           @enderror
         </div>
         <!-- Login Button -->
-        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full">
+        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full transition-all duration-300 ease-in-out hover:bg-[#005E99]">
           Login
         </button>
       </form>
       <p class="mt-4 text-[22px] ml-20">
-        Don’t have an account? <a href="{{ route('register.showStep1') }}" class="text-[#003759] font-semibold">Register</a>
+        Don’t have an account? <a href="{{ route('register.showStep1') }}" class="text-[#003759] font-semibold transition-all duration-300 ease-in-out hover:text-[#005E99]">Register</a>
       </p>
     </div>
     <!-- Bagian kanan -->

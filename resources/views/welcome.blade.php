@@ -22,7 +22,9 @@
 
     <nav class="sticky top-0 z-50 flex justify-between items-center p-4 bg-white shadow max-w-full mx-auto">
         <div class="flex items-center space-x-8">
-            <img src="asset/logo_karirub.svg" alt="KarirUB Logo" class="h-14 ml-4">
+            <a href="{{ route('welcome') }}#find-jobs">
+                <img src="{{ asset('asset/logo_karirub.svg') }}" alt="KarirUB Logo" class="h-14 ml-4">
+            </a>
             <div class="hidden md:flex space-x-20">
                 <a href="#find-jobs" class="text-[#003759] font-semibold ml-8 transition-all duration-200 ease-in-out hover:text-[#0081CE]">Find Jobs</a>
                 <a href="#advantage" class="text-[#003759] font-semibold transition-all duration-200 ease-in-out hover:text-[#0081CE]">Advantage</a>
@@ -31,8 +33,14 @@
             </div>
         </div>
         <div class="flex space-x-4">
-            <a href="{{ route('login') }}" class="font-semibold px-12 py-2 text-[#003759] rounded-full border-2 border-[#003759]">Login</a>
-            <a href="{{ route('register.showStep1') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full flex items-center justify-center">Register</a>
+            <!-- Login Button with Hover Effect -->
+            <a href="{{ route('login') }}" class="font-semibold px-12 py-2 text-[#003759] rounded-full border-2 border-[#003759] transition-all duration-300 ease-in-out hover:bg-[#005E99] hover:text-white">
+                Login
+            </a>
+            <!-- Register Button with Hover Effect -->
+            <a href="{{ route('register.showStep1') }}" class="px-12 py-2 bg-[#003759] text-white rounded-full flex items-center justify-center transition-all duration-300 ease-in-out hover:bg-[#005E99]">
+                Register
+            </a>
         </div>
     </nav>
 
@@ -51,7 +59,7 @@
                     placeholder="Position or Jobs"
                     class="w-full p-4 pr-24 rounded-full border border-[#003759]"
                 >
-                <button type="submit" class="absolute right-0 top-0 h-full px-8 bg-[#005E99] text-white rounded-full">
+                <button type="submit" class="absolute right-0 top-0 h-full px-8 bg-[#005E99] text-white rounded-full transition-all duration-300 ease-in-out hover:bg-[#003759]">
                     Search
                 </button>
             </form>

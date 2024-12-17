@@ -79,12 +79,12 @@
         </div>
         
         <!-- Next Button -->
-        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full">
+        <button type="submit" class="w-[480px] h-[60px] bg-[#003759] text-white text-[22px] font-semibold rounded-full transition-all duration-300 ease-in-out hover:bg-[#005E99]">
             Next
         </button>
       </form>
       <p class="mt-4 ml-20 text-[20px]">
-        Already have an account? <a href="{{ route('login') }}" class="text-[#003759] font-semibold font-montserrat">Login</a>
+        Already have an account? <a href="{{ route('login') }}" class="text-[#003759] font-semibold font-montserrat transition-all duration-300 ease-in-out hover:text-[#005E99]">Login</a>
       </p>
     </div>
     <!-- Bagian kanan -->
