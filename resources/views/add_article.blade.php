@@ -97,23 +97,22 @@
                 </div>
 
                 <!-- Cover Image -->
-<!-- Cover Image -->
-<div>
-    <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
-    <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden" required onchange="handleFilePreview(event)">
-    <div id="preview-container"
-         class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
-         onclick="document.getElementById('cover_image').click()">
-        <div id="placeholder" class="flex flex-col items-center space-y-2">
-            <img src="{{ asset('asset/icon/upload.svg') }}" alt="Upload Icon" class="w-8 h-8">
-            <span class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
-            <span class="text-xs text-gray-400">Max 10 MB files are allowed</span>
-            <div id="preview-container" class="flex flex-col items-center mt-4">
-                            <!-- Preview image will be inserted here -->
+                <div>
+                    <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
+                    <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden" required onchange="handleFilePreview(event)">
+                    <div id="preview-container"
+                        class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
+                        onclick="document.getElementById('cover_image').click()">
+                        <div id="placeholder" class="flex flex-col items-center space-y-2">
+                            <img src="{{ asset('asset/icon/upload.svg') }}" alt="Upload Icon" class="w-8 h-8">
+                            <span class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
+                            <span class="text-xs text-gray-400">Max 10 MB files are allowed</span>
+                            <div id="preview-container" class="flex flex-col items-center mt-4">
+                                            <!-- Preview image will be inserted here -->
+                            </div>
                         </div>
-        </div>
-    </div>
-</div>
+                    </div>
+                </div>
 
 
 
@@ -223,7 +222,7 @@
             const imgPreview = document.createElement('img');
             imgPreview.src = e.target.result;
             imgPreview.alt = 'Image Preview';
-            imgPreview.className = 'h-20 w-20 object-cover rounded-md shadow-md mb-2';
+            imgPreview.className = 'h-24 w-24 object-cover rounded-md shadow-md mb-2';
 
             // Create file size text
             const fileSizeKB = (file.size / 1024).toFixed(2); // Convert to KB

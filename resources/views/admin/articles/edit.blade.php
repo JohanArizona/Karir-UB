@@ -99,22 +99,34 @@
                 <!-- Cover Image -->
                 <div>
                     <label for="cover_image" class="block text-sm font-medium text-gray-700 mb-2">Cover Image</label>
-                    <input type="file" id="cover_image" name="cover_image" accept="image/*" class="hidden">
-                    <div class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-36 space-y-2 cursor-pointer"
-                         onclick="document.getElementById('cover_image').click()">
-                        <img src="asset/upload_icon.svg" alt="Upload Icon" class="w-8 h-8">
-                        <span class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
-                        <span class="text-xs text-gray-400">Max 10 MB files are allowed</span>
+                    <input 
+                        type="file" 
+                        id="cover_image" 
+                        name="cover_image" 
+                        accept="image/*" 
+                        class="hidden" 
+                        required 
+                        onchange="handleFilePreview(event)">
+                    
+                    <div id="preview-container"
+                        class="border-2 border-dashed border-gray-300 bg-[#FFFAFA] rounded-lg flex flex-col items-center justify-center h-48 space-y-2 cursor-pointer"
+                        onclick="document.getElementById('cover_image').click()">
+                        
+                        <!-- Preview Container -->
+                        <div id="placeholder" class="flex flex-col items-center space-y-2">
+                            <!-- If gambar exists in database -->
+                            @if($artikel->gambar)
+                                <img id="preview-image" src="{{ asset('storage/'.$artikel->gambar) }}" alt="Uploaded Image" class="w-24 h-24 rounded-md">
+                            @else
+                                <img id="preview-image" src="{{ asset('asset/icon/upload.svg') }}" alt="Upload Icon" class="w-24 h-24 rounded-md">
+                            @endif
+                            <span id="file-info" class="text-gray-500 text-sm">Drag your file(s) or <span class="text-[#009DFF] underline">browse</span></span>
+                            <span id="max-file-info" class="text-xs text-gray-400">Max 10 MB files are allowed</span>
+                        </div>
                     </div>
-                    <p id="file-name" class="mt-2 text-sm text-gray-500">
-                        @if($artikel->gambar)
-                            <img src="{{ asset('storage/'.$artikel->gambar) }}" id="image-preview" class="w-[150px] h-[150px] object-cover rounded-md" alt="Preview Image">
-                        @else
-                            <p>No image selected</p>
-                        @endif
-                    </p> <!-- Display file name here -->
                 </div>
 
+            
                 <!-- Submit Button -->
                 <div class="flex justify-end">
                     <button type="submit" class="bg-[#005E99] hover:bg-[#005481] text-white font-medium py-2 px-4 rounded-md w-[100px] h-[40px]">
@@ -126,6 +138,31 @@
     </div>
 
     <script>
+    function handleFilePreview(event) {
+        const fileInput = event.target;
+        const previewImage = document.getElementById('preview-image');
+        const fileInfo = document.getElementById('file-info');
+        const maxFileInfo = document.getElementById('max-file-info'); // Elemen untuk "Max 10 MB files are allowed"
+        const file = fileInput.files[0];
+
+        if (file) {
+            // Menampilkan gambar yang dipilih
+            const reader = new FileReader();
+            reader.onload = function (e) {
+                previewImage.src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+
+            // Mengupdate teks dengan nama file dan ukuran
+            const fileSize = (file.size / 1024).toFixed(2); // Ukuran dalam MB
+            fileInfo.textContent = `Size: ${fileSize} KB`;
+
+            // Sembunyikan "Max 10 MB files are allowed"
+            maxFileInfo.style.display = "none";
+        }
+    }
+
+
         // Display the selected file name
         document.getElementById('cover_image').addEventListener('change', function(e) {
             const fileName = e.target.files[0].name;
